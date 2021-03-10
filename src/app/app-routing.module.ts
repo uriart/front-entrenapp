@@ -3,15 +3,19 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '@auth0/auth0-angular';
 
 import { HomeComponent } from './components/home/home.component';
-import { PreciosComponent } from './components/precios/precios.component';
-import { ProtegidaComponent } from './components/protegida/protegida.component';
+import { MarcasComponent } from './components/marcas/marcas.component';
+import { ProgramaComponent } from './components/programa/programa.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'precios', component: PreciosComponent },
   { 
-    path: 'protegida', 
-    component: ProtegidaComponent,
+    path: 'marcas', 
+    component: MarcasComponent,
+    canActivate: [AuthGuard] 
+  },
+  { 
+    path: 'programa', 
+    component: ProgramaComponent,
     canActivate: [ AuthGuard ]
   },
   { path: '**', pathMatch: 'full', redirectTo: 'home'}

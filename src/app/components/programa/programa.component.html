@@ -1,0 +1,126 @@
+<div class="container-sm mt-2 animate__animated animate__fadeIn faster">
+    <h4>Programación de entrenamiento</h4>
+    <hr>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="semana1-tab" data-bs-toggle="tab" data-bs-target="#semana1" type="button" role="tab" aria-controls="semana1" aria-selected="true">Semana 1</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="semana2-tab" data-bs-toggle="tab" data-bs-target="#semana2" type="button" role="tab" aria-controls="semana2" aria-selected="false">Semana 2</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="semana3-tab" data-bs-toggle="tab" data-bs-target="#semana3" type="button" role="tab" aria-controls="semana3" aria-selected="false">Semana 3</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="semana4-tab" data-bs-toggle="tab" data-bs-target="#semana4" type="button" role="tab" aria-controls="semana4" aria-selected="false">Semana 4</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="semana5-tab" data-bs-toggle="tab" data-bs-target="#semana5" type="button" role="tab" aria-controls="semana5" aria-selected="false">Semana 5</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="semana6-tab" data-bs-toggle="tab" data-bs-target="#semana6" type="button" role="tab" aria-controls="semana6" aria-selected="false">Semana 6</button>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="semana1" role="tabpanel" aria-labelledby="home-tab">
+
+            <h4 class="my-4"><small>Acondicionamiento muscular</small></h4>
+            <div class="row row-cols-md-2 g-4">
+                <div class="col">
+                    <div class="card border-dark">
+                        <div class="card-header">{{ marcas.fechaInicio | date: 'EEEE, d MMMM y' }}</div>
+                        <div class="card-body text-dark">
+                            <table class="table table-striped table-hover">
+
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Serie 1</th>
+                                        <th scope="col">Serie 2</th>
+                                        <th scope="col">Serie 3</th>
+                                        <th scope="col">Serie 4</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                        <th scope="row">Sentadilla</th>
+                                        <td>{{ marcas.sentadilla | calculoPeso: 80 }} x 6</td>
+                                        <td>{{ marcas.sentadilla | calculoPeso: 80 }} x 6</td>
+                                        <td>{{ marcas.sentadilla | calculoPeso: 80 }} x 6</td>
+                                        <td>{{ marcas.sentadilla | calculoPeso: 80 }} x 6</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Peso muerto</th>
+                                        <td>{{ marcas.pesoMuerto | calculoPeso: 80 }} x 6</td>
+                                        <td>{{ marcas.pesoMuerto | calculoPeso: 80 }} x 6</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Ejercicio opcional 1</th>
+                                        <td>x 8 - 12</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Ejercicio opcional 2</th>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                  </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card border-dark">
+                        <div class="card-header">{{ marcas.fechaInicio | date: 'EEEE, d MMMM y' }}</div>
+                        <div class="card-body text-dark">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card border-dark">
+                        <div class="card-header">{{ marcas.fechaInicio | date: 'EEEE, d MMMM y' }}</div>
+                        <div class="card-body text-dark">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card border-dark">
+                        <div class="card-header">{{ marcas.fechaInicio | date: 'EEEE, d MMMM y' }}</div>
+                        <div class="card-body text-dark">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card border-dark">
+                        <div class="card-header">{{ marcas.fechaInicio | date: 'EEEE, d MMMM y' }}</div>
+                        <div class="card-body text-dark">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="tab-pane fade" id="semana2" role="tabpanel" aria-labelledby="profile-tab">
+            <pre *ngIf="auth.user$ | async as profile">
+                <code>{{ profile | json }}</code>
+            </pre>
+        </div>
+        <div class="tab-pane fade" id="semana3" role="tabpanel" aria-labelledby="contact-tab">...</div>
+        <div class="tab-pane fade" id="semana4" role="tabpanel" aria-labelledby="contact-tab">...</div>
+        <div class="tab-pane fade" id="semana5" role="tabpanel" aria-labelledby="contact-tab">...</div>
+        <div class="tab-pane fade" id="semana6" role="tabpanel" aria-labelledby="contact-tab">...</div>
+    </div>
+
+
+</div>
