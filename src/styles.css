@@ -2,8 +2,15 @@ img {
     object-fit: cover;
 }
 
+/*Para elimar las fñechitas en el imput de tipo number*/
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
+}
+
+/*Normalizar tamaño de los card*/
+
+div .card {
+  height: 360px;
 }
