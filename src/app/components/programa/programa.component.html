@@ -32,7 +32,6 @@
                         <div class="card-header">{{ marcas.fechaInicio | date: 'EEEE, d MMMM y' }}</div>
                         <div class="card-body text-dark">
                             <table class="table table-striped table-hover">
-
                                 <thead>
                                     <tr>
                                         <th scope="col"></th>
@@ -60,15 +59,15 @@
                                     <tr>
                                         <th scope="row">Ejercicio opcional 1</th>
                                         <td>x 8 - 12</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Ejercicio opcional 2</th>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
                                         <td></td>
                                     </tr>
                                   </tbody>
@@ -79,32 +78,238 @@
 
                 <div class="col">
                     <div class="card border-dark">
-                        <div class="card-header">{{ marcas.fechaInicio | date: 'EEEE, d MMMM y' }}</div>
+                        <div class="card-header">{{ sumarDias(marcas.fechaInicio, 1) | date: 'EEEE, d MMMM y' }}</div>
                         <div class="card-body text-dark">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Serie 1</th>
+                                        <th scope="col">Serie 2</th>
+                                        <th scope="col">Serie 3</th>
+                                        <th scope="col">Serie 4</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                        <th scope="row">Press banca</th>
+                                        <td>{{ marcas.pressBanca | calculoPeso: 50 }} x 10</td>
+                                        <td>{{ marcas.pressBanca | calculoPeso: 65 }} x 10</td>
+                                        <td>{{ marcas.pressBanca | calculoPeso: 75 }} x 8</td>
+                                        <td>{{ marcas.pressBanca | calculoPeso: 77 }} x 6</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">{{ marcas.espalda1 }}</th>
+                                        <td>x 10</td>
+                                        <td>x 10</td>
+                                        <td>x 8</td>
+                                        <td>x 6</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">{{ marcas.ejercicioHombro }}</th>
+                                        <td>x 12</td>
+                                        <td>x 12</td>
+                                        <td>x 10</td>
+                                        <td>x 8</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">{{ marcas.espalda2 }}</th>
+                                        <td>x 12</td>
+                                        <td>x 12</td>
+                                        <td>x 10</td>
+                                        <td>x 8</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Ejercicio opcional 1</th>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Ejercicio opcional 2</th>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td></td>
+                                    </tr>
+                                  </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="card border-dark">
-                        <div class="card-header">{{ marcas.fechaInicio | date: 'EEEE, d MMMM y' }}</div>
+                        <div class="card-header">{{ sumarDias(marcas.fechaInicio, 3) | date: 'EEEE, d MMMM y' }}</div>
                         <div class="card-body text-dark">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Serie 1</th>
+                                        <th scope="col">Serie 2</th>
+                                        <th scope="col">Serie 3</th>
+                                        <th scope="col">Serie 4</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                        <th scope="row">Press banca</th>
+                                        <td>{{ marcas.pressBanca | calculoPeso: 50 }} x 10</td>
+                                        <td>{{ marcas.pressBanca | calculoPeso: 65 }} x 10</td>
+                                        <td>{{ marcas.pressBanca | calculoPeso: 75 }} x 8</td>
+                                        <td>{{ marcas.pressBanca | calculoPeso: 77 }} x 6</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">{{ marcas.espalda1 }}</th>
+                                        <td>x 10</td>
+                                        <td>x 10</td>
+                                        <td>x 8</td>
+                                        <td>x 6</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">{{ marcas.ejercicioHombro }}</th>
+                                        <td>x 12</td>
+                                        <td>x 12</td>
+                                        <td>x 10</td>
+                                        <td>x 8</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">{{ marcas.espalda2 }}</th>
+                                        <td>x 12</td>
+                                        <td>x 12</td>
+                                        <td>x 10</td>
+                                        <td>x 8</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Ejercicio opcional 1</th>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Ejercicio opcional 2</th>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td></td>
+                                    </tr>
+                                  </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="card border-dark">
-                        <div class="card-header">{{ marcas.fechaInicio | date: 'EEEE, d MMMM y' }}</div>
+                        <div class="card-header">{{ sumarDias(marcas.fechaInicio, 4) | date: 'EEEE, d MMMM y' }}</div>
                         <div class="card-body text-dark">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Serie 1</th>
+                                        <th scope="col">Serie 2</th>
+                                        <th scope="col">Serie 3</th>
+                                        <th scope="col">Serie 4</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                        <th scope="row">Sentadilla</th>
+                                        <td>{{ marcas.sentadilla | calculoPeso: 70 }} x 8</td>
+                                        <td>{{ marcas.sentadilla | calculoPeso: 70 }} x 8</td>
+                                        <td>{{ marcas.sentadilla | calculoPeso: 70 }} x 8</td>
+                                        <td>{{ marcas.sentadilla | calculoPeso: 70 }} x 8</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Peso muerto</th>
+                                        <td>{{ marcas.pesoMuerto | calculoPeso: 70 }} x 8</td>
+                                        <td>{{ marcas.pesoMuerto | calculoPeso: 70 }} x 8</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Ejercicio opcional 1</th>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Ejercicio opcional 2</th>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td></td>
+                                    </tr>
+                                  </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
 
-                <div class="col">
+                <div class="col mb-4">
                     <div class="card border-dark">
-                        <div class="card-header">{{ marcas.fechaInicio | date: 'EEEE, d MMMM y' }}</div>
+                        <div class="card-header">{{ sumarDias(marcas.fechaInicio, 5) | date: 'EEEE, d MMMM y' }}</div>
                         <div class="card-body text-dark">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Serie 1</th>
+                                        <th scope="col">Serie 2</th>
+                                        <th scope="col">Serie 3</th>
+                                        <th scope="col">Serie 4</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                        <th scope="row">Press banca</th>
+                                        <td>{{ marcas.pressBanca | calculoPeso: 80 }} x MR10</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">{{ marcas.espalda1 }}</th>
+                                        <td>x 10</td>
+                                        <td>x 10</td>
+                                        <td>x 8</td>
+                                        <td>x 6</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">{{ marcas.ejercicioHombro }}</th>
+                                        <td>x 12</td>
+                                        <td>x 12</td>
+                                        <td>x 10</td>
+                                        <td>x 8</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">{{ marcas.espalda2 }}</th>
+                                        <td>x 12</td>
+                                        <td>x 12</td>
+                                        <td>x 10</td>
+                                        <td>x 8</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Ejercicio opcional 1</th>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Ejercicio opcional 2</th>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td>x 8 - 12</td>
+                                        <td></td>
+                                    </tr>
+                                  </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

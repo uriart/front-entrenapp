@@ -7,7 +7,8 @@ export class CalculoPesoPipe implements PipeTransform {
 
   transform(value: number, porcentaje: number): string {
     var calculo = (value * porcentaje) / 100;
-    return calculo +' Kg';
+    var pesoRedondeado = Math.round(calculo);
+    return pesoRedondeado +' Kg';
   }
 
 }

@@ -36,7 +36,7 @@ export class ProgramaComponent implements OnInit {
     );
   }
 
-  sumarDias = (d:number, fecha: Date) => {
+  sumarDias = (fecha: Date, d:number) => {
     var fechaFinal = new Date(fecha);
     fechaFinal.setDate( fechaFinal.getDate() + d );
     return fechaFinal;
