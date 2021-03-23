@@ -9,8 +9,9 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }
 
-/*Normalizar tamaño de los card*/
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 div .card {
-  height: 360px;
+  
 }

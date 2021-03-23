@@ -10,12 +10,17 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProgramaComponent } from './components/programa/programa.component';
 import { MarcasComponent } from './components/marcas/marcas.component';
+import { Semana1Component } from './components/programa/semana1/semana1.component';
+import { Semana2Component } from './components/programa/semana2/semana2.component';
 
 import { AuthModule } from '@auth0/auth0-angular';
-import { FormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule } from '@angular/common/http';
-import { CalculoPesoPipe } from './pipes/calculo-peso.pipe';
+import { TooltipModule } from 'ng2-tooltip-directive';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { CalculoPesoPipe } from './pipes/calculo-peso.pipe';
 
 
 @NgModule({
@@ -25,13 +30,18 @@ import { CalculoPesoPipe } from './pipes/calculo-peso.pipe';
     HomeComponent,
     ProgramaComponent,
     MarcasComponent,
-    CalculoPesoPipe
+    Semana1Component,
+    CalculoPesoPipe,
+    Semana2Component
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    TooltipModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
     AuthModule.forRoot({
       domain: 'dev-r071w8pk.eu.auth0.com',
       clientId: '1oVAezqLX77ftKY3aKHX3Cr86ag2guga'

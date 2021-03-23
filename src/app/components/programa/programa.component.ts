@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
-import { MarcasModel } from 'src/app/models/marcas.model';
-import { MarcasService } from 'src/app/services/marcas.service';
+import { CanditoModel } from 'src/app/models/candito.model';
+import { ProgramacionesService } from 'src/app/services/programaciones.service';
 
 @Component({
   selector: 'app-programa',
@@ -12,10 +12,11 @@ import { MarcasService } from 'src/app/services/marcas.service';
 export class ProgramaComponent implements OnInit {
 
   idUsuario: string = null;
-  marcas = new MarcasModel;
+
+  programaCandito: CanditoModel = new CanditoModel;
 
   constructor( public auth: AuthService,
-               private marcasService: MarcasService ) { }
+               private programacionesService: ProgramacionesService ) { }
 
   ngOnInit(): void {
 
@@ -23,23 +24,14 @@ export class ProgramaComponent implements OnInit {
       (profile) => {
         (this.idUsuario = JSON.stringify(profile.sub, null, 2))
 
-        //Recogemos las marcas del usuario
-        this.marcasService.getMarcas( this.idUsuario )
-        .subscribe( resp  => {
-            var marcasTemp: any = {
-              ...this.marcas
-            };
-            marcasTemp = resp;
-            this.marcas = marcasTemp;          
-        });
+        //Llamar al servicio para obtener lan programación candito. Enviar el idUsuario por parámetro
+        this.programaCandito = this.programacionesService.generarProgramacionCandito( this.idUsuario );
+
+        console.log(this.programaCandito);
+        
       }
     );
-  }
 
-  sumarDias = (fecha: Date, d:number) => {
-    var fechaFinal = new Date(fecha);
-    fechaFinal.setDate( fechaFinal.getDate() + d );
-    return fechaFinal;
   }
 
 }
