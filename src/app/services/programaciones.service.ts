@@ -27,11 +27,10 @@ export class ProgramacionesService {
       var listaSemanas = new Array<SemanaModel>();
         listaSemanas.push(this.crearSemana1(marcas));
         listaSemanas.push(this.crearSemana2(marcas));
-
+        listaSemanas.push(this.crearSemana3(marcas));
+        listaSemanas.push(this.crearSemana4(marcas));
+        listaSemanas.push(this.crearSemana5(marcas));
       this.programaCandito.semana = listaSemanas;
-
-
-
     });
     
     return this.programaCandito;
@@ -64,7 +63,6 @@ export class ProgramacionesService {
         listaEjerciciosDia1.push(this.crearEjercicio('Peso Muerto', [80,80], ['x6','x6'], marcas.pesoMuerto));
         listaEjerciciosDia1.push(this.crearEjercicio('Opcional 1', [], ['x8-12','x8-12','x8-12'], 0));
         listaEjerciciosDia1.push(this.crearEjercicio('Opcional 2', [], ['x8-12','x8-12','x8-12'], 0));
-
       dia1.ejercicios = listaEjerciciosDia1;
       listaDias.push(dia1);
 
@@ -116,7 +114,7 @@ export class ProgramacionesService {
   crearSemana2 = (marcas: MarcasModel) => {
     
     var semana2: SemanaModel = new SemanaModel;
-    semana2.descripcion = "Hiperttrofia Muscular";
+    semana2.descripcion = "Hipertrofia Muscular";
     
       var listaDias = new Array<DiaModel>();
 
@@ -178,6 +176,158 @@ export class ProgramacionesService {
       semana2.dias = listaDias;
 
       return semana2;
+  }
+
+  crearSemana3 = (marcas: MarcasModel) => {
+    
+    var semana3: SemanaModel = new SemanaModel;
+    semana3.descripcion = "Max-OT";
+    
+      var listaDias = new Array<DiaModel>();
+
+      var dia1: DiaModel = new DiaModel;
+      dia1.fechaDia = this.sumarDias(marcas.fechaInicio, 14);
+
+      var listaEjerciciosDia1 = new Array<EjercicioModel>();
+        listaEjerciciosDia1.push(this.crearEjercicio('Sentadilla', [85, 85, 85], ['x4-6','x4-6','x4-6'], marcas.sentadilla));
+        listaEjerciciosDia1.push(this.crearEjercicio('Peso Muerto', [87, 87], ['x3-6', 'x3-6'], marcas.pesoMuerto));
+
+      dia1.ejercicios = listaEjerciciosDia1;
+      listaDias.push(dia1);
+
+      var dia2: DiaModel = new DiaModel;
+      dia2.fechaDia = this.sumarDias(marcas.fechaInicio, 16);
+      var listaEjerciciosDia2 = new Array<EjercicioModel>();
+        listaEjerciciosDia2.push(this.crearEjercicio('Press Banca', [85,85,85], ['x4-6','x4-6','x4-6'], marcas.pressBanca));
+        listaEjerciciosDia2.push(this.crearEjercicio(marcas.espalda1, [], ['x6','x6','x6'], 0));
+        listaEjerciciosDia2.push(this.crearEjercicio(marcas.ejercicioHombro, [], ['x6','x6','x6'], 0));
+        listaEjerciciosDia2.push(this.crearEjercicio(marcas.espalda2, [], ['x6','x6','x6'], 0));
+      dia2.ejercicios = listaEjerciciosDia2;
+      listaDias.push(dia2);
+
+      var dia3: DiaModel = new DiaModel;
+      dia3.fechaDia = this.sumarDias(marcas.fechaInicio, 18);
+      var listaEjerciciosDia3 = new Array<EjercicioModel>();
+        listaEjerciciosDia3.push(this.crearEjercicio('Sentadilla', [88], ['x4-6'], marcas.sentadilla));
+        listaEjerciciosDia3.push(this.crearEjercicio('Peso Muerto', [], ['x8'], marcas.pesoMuerto));
+      dia3.ejercicios = listaEjerciciosDia3;
+      listaDias.push(dia3);
+
+      var dia4: DiaModel = new DiaModel;
+      dia4.fechaDia = this.sumarDias(marcas.fechaInicio, 19);
+      var listaEjerciciosDia4 = new Array<EjercicioModel>();
+        listaEjerciciosDia4.push(this.crearEjercicio('Press Banca', [90,90,90], ['x4-6','x4-6','x4-6'], marcas.pressBanca));
+        listaEjerciciosDia4.push(this.crearEjercicio(marcas.espalda1, [], ['x6','x6','x6'], 0));
+        listaEjerciciosDia4.push(this.crearEjercicio(marcas.ejercicioHombro, [], ['x6','x6','x6'], 0));
+        listaEjerciciosDia4.push(this.crearEjercicio(marcas.espalda2, [], ['x6','x6','x6'], 0));
+      dia4.ejercicios = listaEjerciciosDia4;
+      listaDias.push(dia4);
+      
+      semana3.dias = listaDias;
+
+      return semana3;
+  }
+
+  crearSemana4 = (marcas: MarcasModel) => {
+    
+    var semana4: SemanaModel = new SemanaModel;
+    semana4.descripcion = "Aclimatación a altas cargas";
+    
+      var listaDias = new Array<DiaModel>();
+
+      var dia1: DiaModel = new DiaModel;
+      dia1.fechaDia = this.sumarDias(marcas.fechaInicio, 21);
+
+      var listaEjerciciosDia1 = new Array<EjercicioModel>();
+        listaEjerciciosDia1.push(this.crearEjercicio('Sentadilla', [87, 90, 93], ['x3','x3','x3'], marcas.sentadilla));
+        listaEjerciciosDia1.push(this.crearEjercicio('Peso Muerto', [], ['x6', 'x6'], marcas.pesoMuerto));
+        listaEjerciciosDia1.push(this.crearEjercicio('Opcional 1', [], ['x8-12','x8-12','x8-12'], 0));
+        listaEjerciciosDia1.push(this.crearEjercicio('Opcional 2', [], ['x8-12','x8-12','x8-12'], 0));
+
+      dia1.ejercicios = listaEjerciciosDia1;
+      listaDias.push(dia1);
+
+      var dia2: DiaModel = new DiaModel;
+      dia2.fechaDia = this.sumarDias(marcas.fechaInicio, 22);
+      var listaEjerciciosDia2 = new Array<EjercicioModel>();
+        listaEjerciciosDia2.push(this.crearEjercicio('Press Banca', [87,90,92], ['x3','x3','x3'], marcas.pressBanca));
+        listaEjerciciosDia2.push(this.crearEjercicio(marcas.espalda1, [], ['x10','x10','x8','x6'], 0));
+        listaEjerciciosDia2.push(this.crearEjercicio(marcas.ejercicioHombro, [], ['x12','x12','x10','x8'], 0));
+        listaEjerciciosDia2.push(this.crearEjercicio(marcas.espalda2, [], ['x12','x12','x10','x8'], 0));
+        listaEjerciciosDia2.push(this.crearEjercicio('Opcional 1', [], ['x8-12','x8-12','x8-12','x8-12'], 0));
+        listaEjerciciosDia2.push(this.crearEjercicio('Opcional 2', [], ['x8-12','x8-12','x8-12','x8-12'], 0));
+      dia2.ejercicios = listaEjerciciosDia2;
+      listaDias.push(dia2);
+
+      var dia3: DiaModel = new DiaModel;
+      dia3.fechaDia = this.sumarDias(marcas.fechaInicio, 24);
+      var listaEjerciciosDia3 = new Array<EjercicioModel>();
+        listaEjerciciosDia3.push(this.crearEjercicio('Sentadilla', [92, 95], ['x3','x1-2'], marcas.sentadilla));
+        listaEjerciciosDia3.push(this.crearEjercicio('Peso Muerto', [92, 95], ['x3','x1-2'], marcas.pesoMuerto));
+        listaEjerciciosDia3.push(this.crearEjercicio('Opcional 1', [], ['x8-12','x8-12','x8-12'], 0));
+        listaEjerciciosDia3.push(this.crearEjercicio('Opcional 2', [], ['x8-12','x8-12','x8-12'], 0));
+      dia3.ejercicios = listaEjerciciosDia3;
+      listaDias.push(dia3);
+
+      var dia4: DiaModel = new DiaModel;
+      dia4.fechaDia = this.sumarDias(marcas.fechaInicio, 25);
+      var listaEjerciciosDia4 = new Array<EjercicioModel>();
+        listaEjerciciosDia4.push(this.crearEjercicio('Press Banca', [87,90,95], ['x3','x2-4','x1-2'], marcas.pressBanca));
+        listaEjerciciosDia4.push(this.crearEjercicio(marcas.espalda1, [], ['x10','x10','x8','x6'], 0));
+        listaEjerciciosDia4.push(this.crearEjercicio(marcas.ejercicioHombro, [], ['x12','x12','x10','x8'], 0));
+        listaEjerciciosDia4.push(this.crearEjercicio(marcas.espalda2, [], ['x12','x12','x10','x8'], 0));
+        listaEjerciciosDia4.push(this.crearEjercicio('Opcional 1', [], ['x8-12','x8-12','x8-12'], 0));
+        listaEjerciciosDia4.push(this.crearEjercicio('Opcional 2', [], ['x8-12','x8-12','x8-12'], 0));
+      dia4.ejercicios = listaEjerciciosDia4;
+      listaDias.push(dia4);
+      
+      semana4.dias = listaDias;
+
+      return semana4;
+  }
+
+    crearSemana5 = (marcas: MarcasModel) => {
+    
+    var semana5: SemanaModel = new SemanaModel;
+    semana5.descripcion = "Fuerza / Alta intensidad";
+    
+      var listaDias = new Array<DiaModel>();
+
+      var dia1: DiaModel = new DiaModel;
+      dia1.fechaDia = this.sumarDias(marcas.fechaInicio, 28);
+
+      var listaEjerciciosDia1 = new Array<EjercicioModel>();
+        listaEjerciciosDia1.push(this.crearEjercicio('Sentadilla', [97], ['x1-4'], marcas.sentadilla));
+        listaEjerciciosDia1.push(this.crearEjercicio('Peso Muerto', [87, 90, 92], ['x4', 'x4', 'x2'], marcas.pesoMuerto));
+        listaEjerciciosDia1.push(this.crearEjercicio('Opcional tren inferior', [], ['x8-12','x8-12','x8-12'], 0));
+        listaEjerciciosDia1.push(this.crearEjercicio('Opcional tren inferior', [], ['x8-12','x8-12','x8-12'], 0));
+
+      dia1.ejercicios = listaEjerciciosDia1;
+      listaDias.push(dia1);
+
+      var dia2: DiaModel = new DiaModel;
+      dia2.fechaDia = this.sumarDias(marcas.fechaInicio, 30);
+      var listaEjerciciosDia2 = new Array<EjercicioModel>();
+        listaEjerciciosDia2.push(this.crearEjercicio('Press Banca', [97], ['x1-4'], marcas.pressBanca));
+        listaEjerciciosDia2.push(this.crearEjercicio(marcas.espalda1, [], ['x8','x6','x6'], 0));
+        listaEjerciciosDia2.push(this.crearEjercicio(marcas.ejercicioHombro, [], ['x8','x6','x6'], 0));
+        listaEjerciciosDia2.push(this.crearEjercicio(marcas.espalda2, [], ['x8','x6','x6'], 0));
+        listaEjerciciosDia2.push(this.crearEjercicio('Opcional 1', [], ['x8-12','x8-12','x8-12'], 0));
+        listaEjerciciosDia2.push(this.crearEjercicio('Opcional 2', [], ['x8-12','x8-12','x8-12'], 0));
+      dia2.ejercicios = listaEjerciciosDia2;
+      listaDias.push(dia2);
+
+      var dia3: DiaModel = new DiaModel;
+      dia3.fechaDia = this.sumarDias(marcas.fechaInicio, 32);
+      var listaEjerciciosDia3 = new Array<EjercicioModel>();
+        listaEjerciciosDia3.push(this.crearEjercicio('Peso Muerto', [97], ['x1-4'], marcas.pesoMuerto));
+        listaEjerciciosDia3.push(this.crearEjercicio('Opcional tren inferior', [], ['x8-12','x8-12','x8-12'], 0));
+        listaEjerciciosDia3.push(this.crearEjercicio('Opcional tren inferior', [], ['x8-12','x8-12','x8-12'], 0));
+      dia3.ejercicios = listaEjerciciosDia3;
+      listaDias.push(dia3);
+      semana5.dias = listaDias;
+
+      return semana5;
   }
 
   crearEjercicio = (nombreEjercicio: string, pesos: number[], reps: string[], maxima: number) => {
