@@ -5,6 +5,7 @@ import { AuthGuard } from '@auth0/auth0-angular';
 import { HomeComponent } from './components/home/home.component';
 import { MarcasComponent } from './components/marcas/marcas.component';
 import { ProgramaComponent } from './components/programa/programa.component';
+import { LibretaComponent } from './components/libreta/libreta.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -16,6 +17,11 @@ const routes: Routes = [
   { 
     path: 'programa', 
     component: ProgramaComponent,
+    canActivate: [ AuthGuard ]
+  },
+  { 
+    path: 'libreta', 
+    component: LibretaComponent,
     canActivate: [ AuthGuard ]
   },
   { path: '**', pathMatch: 'full', redirectTo: 'home'}

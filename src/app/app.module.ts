@@ -10,8 +10,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProgramaComponent } from './components/programa/programa.component';
 import { MarcasComponent } from './components/marcas/marcas.component';
-import { Semana1Component } from './components/programa/semana1/semana1.component';
-import { Semana2Component } from './components/programa/semana2/semana2.component';
 
 import { AuthModule } from '@auth0/auth0-angular';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -21,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CalculoPesoPipe } from './pipes/calculo-peso.pipe';
+import { LibretaComponent } from './components/libreta/libreta.component';
 
 
 @NgModule({
@@ -30,9 +29,8 @@ import { CalculoPesoPipe } from './pipes/calculo-peso.pipe';
     HomeComponent,
     ProgramaComponent,
     MarcasComponent,
-    Semana1Component,
     CalculoPesoPipe,
-    Semana2Component
+    LibretaComponent
   ],
   imports: [
     BrowserModule,

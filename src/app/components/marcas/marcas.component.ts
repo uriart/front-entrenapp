@@ -65,8 +65,12 @@ export class MarcasComponent implements OnInit {
 
     this.marcasService.crearMarcas( forma.value, this.idUsuario )
       .subscribe( resp => {
-        //Viajamos al programa
-        this.router.navigate(['programa']);
+        Swal.fire({
+          title:'Actualizado correctamente',
+          html: `Dirigete al <a class="link" href="/programa"><i class="far fa-calendar-alt"> </i>Programa</a> para ver los cambios`,
+          icon: 'success',
+          showConfirmButton: true
+        });
       });
   }
 
