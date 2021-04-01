@@ -298,7 +298,7 @@ export class ProgramacionesService {
 
       var listaEjerciciosDia1 = new Array<EjercicioModel>();
         listaEjerciciosDia1.push(this.crearEjercicio('Sentadilla', [97], ['x1-4'], marcas.sentadilla));
-        listaEjerciciosDia1.push(this.crearEjercicio('Peso Muerto', [87, 90, 92], ['x4', 'x4', 'x2'], marcas.pesoMuerto));
+        listaEjerciciosDia1.push(this.crearEjercicio('Peso Muerto', [70, 73, 76], ['x4', 'x4', 'x2'], marcas.pesoMuerto));
         listaEjerciciosDia1.push(this.crearEjercicio('Opcional tren inferior', [], ['x8-12','x8-12','x8-12'], 0));
         listaEjerciciosDia1.push(this.crearEjercicio('Opcional tren inferior', [], ['x8-12','x8-12','x8-12'], 0));
 
