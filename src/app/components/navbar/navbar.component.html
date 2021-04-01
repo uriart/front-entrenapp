@@ -11,7 +11,7 @@
                     <a class="nav-link" [routerLink]="['marcas']"><i class="fas fa-dumbbell"></i> Mis marcas</a>
                 </li>
                 <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated$ | async">
-                    <a class="nav-link " [routerLink]="[ 'programa'] "><i class="far fa-calendar-alt"></i> Programa</a>
+                    <a class="nav-link " [routerLink]="[ 'programa']"><i class="far fa-calendar-alt"></i> Programa</a>
                 </li>
                 <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated$ | async">
                     <a class="nav-link " [routerLink]="[ 'libreta'] "><i class="far fa-clipboard"></i> Libreta</a>

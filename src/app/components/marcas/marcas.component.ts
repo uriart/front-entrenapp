@@ -67,7 +67,7 @@ export class MarcasComponent implements OnInit {
       .subscribe( resp => {
         Swal.fire({
           title:'Actualizado correctamente',
-          html: `Dirigete al <a class="link" href="/programa"><i class="far fa-calendar-alt"> </i>Programa</a> para ver los cambios`,
+          html: `Dirigete al <a class="link" [routerLink]="[ '../programa']"><i class="far fa-calendar-alt"> </i>Programa</a> para ver los cambios`,
           icon: 'success',
           showConfirmButton: true
         });

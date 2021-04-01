@@ -43,7 +43,7 @@ import { LibretaComponent } from './components/libreta/libreta.component';
     AuthModule.forRoot({
       domain: 'dev-r071w8pk.eu.auth0.com',
       clientId: '1oVAezqLX77ftKY3aKHX3Cr86ag2guga',
-      redirectUri: window.location.href
+      redirectUri: window.location.origin + '/programa-powerlifting'
     }),
   ],
   providers: [
