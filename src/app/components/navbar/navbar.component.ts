@@ -9,7 +9,7 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class NavbarComponent implements OnInit {
 
-  callback = document.location.origin;
+  callback = window.location.origin + '/programa-powerlifting';
 
   constructor( public auth:AuthService ) { }
 
