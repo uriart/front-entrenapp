@@ -1,108 +1,111 @@
 
 <h1>{{programaCandito.titulo}}</h1>
 <hr>
-<mat-tab-group>
+<mat-tab-group animationDuration="0ms">
     <mat-tab *ngFor="let semana of programaCandito.semana, let i = index" label="Semana {{i+1}}">
-        <h2 class="mt-4"><small>{{ semana.descripcion }}</small></h2>
-        <div class="row row-cols-md-2 g-4">
 
-            <div *ngFor="let dia of semana.dias" class="col">
-                <div class="card border-dark mb-3">
-                    <div class="card-header">{{ dia.fechaDia | date: 'EEEE, d MMMM y' }}</div>
-                    <div class="card-body text-dark">
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Serie 1</th>
-                                    <th scope="col">Serie 2</th>
-                                    <th scope="col">Serie 3</th>
-                                    <th scope="col">Serie 4</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr *ngFor="let ejercicio of dia.ejercicios">
-                                    <ng-container *ngIf="ejercicio.nombreEjercicio != 'colspan5'">
-                                        <th scope="row">{{ejercicio.nombreEjercicio}}</th>
-                                        <td *ngFor="let pesoReps of ejercicio.pesoReps" [ngSwitch]="pesoReps.repeticiones">
-                                            <div *ngSwitchCase="' MR'">
-                                                {{ pesoReps.peso }}
-                                                <span class="badge rounded-pill bg-info text-dark" tooltip="Máximas repeticiones" placement="top">{{ pesoReps.repeticiones }}</span>
-                                            </div>
-                                            <div *ngSwitchCase="' MR10'">
-                                                {{ pesoReps.peso }}
-                                                <span class="badge rounded-pill bg-info text-dark" tooltip="Máximas repeticiones, pero no más de 10" placement="top">{{ pesoReps.repeticiones }}</span>
-                                            </div>
-                                            <div *ngSwitchCase="' x1-4'">
-                                                {{ pesoReps.peso }}
-                                                <span class="badge rounded-pill bg-warning text-dark" tooltip="Recuerda o anota las repeticiones que eres capaz de hacer" placement="top">{{ pesoReps.repeticiones }}</span>
-                                            </div>
-                                            <div *ngSwitchDefault>
-                                                {{ pesoReps.peso }} {{ pesoReps.repeticiones }}
-                                            </div>
-                                        </td>
-                                    </ng-container>
-                                    <ng-container *ngIf="ejercicio.nombreEjercicio == 'colspan5'">
-                                        <td *ngFor="let pesoReps of ejercicio.pesoReps" colspan="5" [ngSwitch]="pesoReps.repeticiones">
-                                            <div *ngSwitchCase="'info1'">
-                                                Añade {{ pesoReps.peso }} y realiza 5 series x 3 repeticiones cada serie, con 60 segundos de descanso entre series.
-                                                (Si no has podido realizar un mínimo de 8 repeticiones en la 
-                                                <span class="badge rounded-pill bg-info text-dark" tooltip="Máximas repeticiones, pero no más de 10" placement="top">MR10</span>
-                                                , baja {{ pesoReps.peso }} en lugar de incrementar el peso).
-                                            </div>
-                                            <div *ngSwitchCase="'info2'">
-                                                Reduce {{ pesoReps.peso }} y realiza 10 series x 3 repeticiones cada serie, con 60 segundos de descanso entre series.
-                                                (Si no has podido realizar un mínimo de 8 repeticiones en la 
-                                                <span class="badge rounded-pill bg-info text-dark" tooltip="Máximas repeticiones, pero no más de 10" placement="top">MR10</span>
-                                                , realiza 8 series en lugar de 10).
-                                            </div>
-                                        </td>
-                                    </ng-container>
+        <ng-container *ngIf="i != 5">
+            <!-- Primeras 5 semanas -->
+            <h2 class="mt-4"><small>{{ semana.descripcion }}</small></h2>
+            <div class="row row-cols-md-2 g-4">
+                <div *ngFor="let dia of semana.dias" class="col">
+                    <div class="card border-dark mb-3">
+                        <div class="card-header">{{ dia.fechaDia | date: 'EEEE, d MMMM y' }}</div>
+                        <div class="card-body text-dark">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Serie 1</th>
+                                        <th scope="col">Serie 2</th>
+                                        <th scope="col">Serie 3</th>
+                                        <th scope="col">Serie 4</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let ejercicio of dia.ejercicios">
+                                        <ng-container *ngIf="ejercicio.nombreEjercicio != 'colspan5'">
+                                            <th scope="row">{{ejercicio.nombreEjercicio}}</th>
+                                            <td *ngFor="let pesoReps of ejercicio.pesoReps" [ngSwitch]="pesoReps.repeticiones">
+                                                <div *ngSwitchCase="' MR'">
+                                                    {{ pesoReps.peso }}
+                                                    <span class="badge rounded-pill bg-info text-dark" tooltip="Máximas repeticiones" placement="top">{{ pesoReps.repeticiones }}</span>
+                                                </div>
+                                                <div *ngSwitchCase="' MR10'">
+                                                    {{ pesoReps.peso }}
+                                                    <span class="badge rounded-pill bg-info text-dark" tooltip="Máximas repeticiones, pero no más de 10" placement="top">{{ pesoReps.repeticiones }}</span>
+                                                </div>
+                                                <div *ngSwitchCase="' x1-4'">
+                                                    {{ pesoReps.peso }}
+                                                    <span class="badge rounded-pill bg-warning text-dark" tooltip="Recuerda o anota las repeticiones que eres capaz de hacer" placement="top">{{ pesoReps.repeticiones }}</span>
+                                                </div>
+                                                <div *ngSwitchDefault>
+                                                    {{ pesoReps.peso }} {{ pesoReps.repeticiones }}
+                                                </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container *ngIf="ejercicio.nombreEjercicio == 'colspan5'">
+                                            <td *ngFor="let pesoReps of ejercicio.pesoReps" colspan="5" [ngSwitch]="pesoReps.repeticiones">
+                                                <div *ngSwitchCase="'info1'">
+                                                    Añade {{ pesoReps.peso }} y realiza 5 series x 3 repeticiones cada serie, con 60 segundos de descanso entre series.
+                                                    (Si no has podido realizar un mínimo de 8 repeticiones en la 
+                                                    <span class="badge rounded-pill bg-info text-dark" tooltip="Máximas repeticiones, pero no más de 10" placement="top">MR10</span>
+                                                    , baja {{ pesoReps.peso }} en lugar de incrementar el peso).
+                                                </div>
+                                                <div *ngSwitchCase="'info2'">
+                                                    Reduce {{ pesoReps.peso }} y realiza 10 series x 3 repeticiones cada serie, con 60 segundos de descanso entre series.
+                                                    (Si no has podido realizar un mínimo de 8 repeticiones en la 
+                                                    <span class="badge rounded-pill bg-info text-dark" tooltip="Máximas repeticiones, pero no más de 10" placement="top">MR10</span>
+                                                    , realiza 8 series en lugar de 10).
+                                                </div>
+                                            </td>
+                                        </ng-container>
 
-                                </tr>
-                                </tbody>
-                        </table>
+                                    </tr>
+                                    </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
+        </ng-container>
 
-        </div>
-    </mat-tab>
-    <mat-tab label="Semana 6">
-
-        <h2 class="mt-4"><small>Fin del programa</small></h2>
-        <div class="g-4 mt-4">
-            <p class="lh-base">Para la semana 6 tienes tres opciones:</p>
-            <ul>
-                <li>Calcula tu nueva <b>máxima proyectada</b> y empieza otra vez con el programa, omitiendo la semana 6.</li>
-                <li>Repite la semana 1, pero sin el entrenemiento del último día. Tómalo como semana de descarga. Después, calcula tu nueva <b>máxima proyectada</b> y empieza otra vez con el programa.</li>
-                <li>Utiliza esta semana para buscar tu nueva <b>máxima real</b>. Después empieza otra vez con el programa o realiza una semana de descarga.</li>
-            </ul>
-        </div>  
-
-        <h2 class="mt-5"><small>Cálculo de máxima proyectada:</small></h2>
-        <p class="lh-base">Indica el número de repeticiones que lograste realizar en las series <span class="badge rounded-pill bg-warning text-dark">x1-4</span> de la semana 5.</p>
-        <div class="row g-3 align-items-center">
-            <div class="col-1">
-                <label class="col-form-label">Sentadilla</label>
-                </div>
-                <div class="col-auto">
-                <select class="form-select" (change)="calcularMPSentadilla($event.target.value)">
-                    <option value=""></option>
-                    <option value="1">1</option>
-                    <option value="1.03">2</option>
-                    <option value="1.06">3</option>
-                    <option value="1.09">4</option>
-                </select>
-                </div>
-                <div class="col-auto">
-                <label class="col-form-label">Nueva máxima proyectada</label>
-                </div>
+        <ng-container *ngIf="i == 5">
+            <!-- Sexta semana diferenet al resto del programa -->
+            <h2 class="mt-4"><small>Fin del programa</small></h2>
+            <div class="g-4 mt-4">
+                <p class="lh-base">Para la semana 6 tienes tres opciones:</p>
+                <ul>
+                    <li>Calcula tu nueva <b>máxima proyectada</b> y empieza otra vez con el programa, omitiendo la semana 6.</li>
+                    <li>Repite la semana 1, pero sin el entrenemiento del último día. Tómalo como semana de descarga. Después, calcula tu nueva <b>máxima proyectada</b> y empieza otra vez con el programa.</li>
+                    <li>Utiliza esta semana para buscar tu nueva <b>máxima real</b>. Después empieza otra vez con el programa o realiza una semana de descarga.</li>
+                </ul>
+            </div>  
+    
+            <h2 class="mt-5"><small>Cálculo de máxima proyectada:</small></h2>
+            <p class="lh-base">Indica el número de repeticiones que lograste realizar en las series <span class="badge rounded-pill bg-warning text-dark">x1-4</span> de la semana 5.</p>
+            
+            <div class="row g-3 align-items-center">
                 <div class="col-1">
-                <input type="text" disabled [value]="sentadillaMaximaProyectada" class="form-control">
+                    <label class="col-form-label">Sentadilla</label>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select" (change)="calcularMPSentadilla($event.target.value)">
+                        <option value=""></option>
+                        <option value="1">1</option>
+                        <option value="1.03">2</option>
+                        <option value="1.06">3</option>
+                        <option value="1.09">4</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <label class="col-form-label">Máxima proyectada</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" disabled [value]="sentadillaMaximaProyectada" class="form-control" size="5">
                 </div>
             </div>
-
+    
             <div class="row g-3 align-items-center">
             <div class="col-1">
                 <label class="col-form-label">Press Banca</label>
@@ -117,35 +120,36 @@
                 </select>
                 </div>
                 <div class="col-auto">
-                <label class="col-form-label">Nueva máxima proyectada</label>
+                <label class="col-form-label">Máxima proyectada</label>
                 </div>
-                <div class="col-1">
-                <input type="text" disabled [value]="pressBancaMaximaProyectada" class="form-control">
+                <div class="col-auto">
+                <input type="text" disabled [value]="pressBancaMaximaProyectada" class="form-control" size="5">
                 </div>
             </div>
-
+    
             <div class="row g-3 align-items-center">
-            <div class="col-1">
-                <label for="inputPassword6" class="col-form-label">Peso Muerto</label>
-                </div>
-                <div class="col-auto">
-                <select class="form-select" (change)="calcularMPPesoMuerto($event.target.value)">
-                    <option value=""></option>
-                    <option value="1">1</option>
-                    <option value="1.03">2</option>
-                    <option value="1.06">3</option>
-                    <option value="1.09">4</option>
-                </select>
-                </div>
-                <div class="col-auto">
-                <label for="inputPassword6" class="col-form-label">Nueva máxima proyectada</label>
-                </div>
                 <div class="col-1">
-                <input type="text" disabled [value]="pesoMuertoMaximaProyectada" class="form-control">
+                    <label for="inputPassword6" class="col-form-label">Peso Muerto</label>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select" (change)="calcularMPPesoMuerto($event.target.value)">
+                        <option value=""></option>
+                        <option value="1">1</option>
+                        <option value="1.03">2</option>
+                        <option value="1.06">3</option>
+                        <option value="1.09">4</option>
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <label for="inputPassword6" class="col-form-label">Máxima proyectada</label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" disabled [value]="pesoMuertoMaximaProyectada" class="form-control" size="5">
                 </div>
             </div>
-
+    
             <p class="lh-base mt-4 small">*Recuerda acualizar tus marcas desde la sección <a [routerLink]="['../marcas']"><i class="fas fa-dumbbell"></i> Mis marcas</a> </p>
+        </ng-container>
 
     </mat-tab>
 </mat-tab-group>

@@ -30,6 +30,7 @@ export class ProgramacionesService {
         listaSemanas.push(this.crearSemana3(marcas));
         listaSemanas.push(this.crearSemana4(marcas));
         listaSemanas.push(this.crearSemana5(marcas));
+        listaSemanas.push(null);
       this.programaCandito.semana = listaSemanas;
     });
     
@@ -37,17 +38,6 @@ export class ProgramacionesService {
 
   }
 
-  sumarDias = (fecha: Date, d:number) => {
-    var fechaFinal = new Date(fecha);
-    fechaFinal.setDate( fechaFinal.getDate() + d );
-    return fechaFinal;
-  }
-
-  calcularPeso(value: number, porcentaje: number): string {
-    var calculo = (value * porcentaje) / 100;
-    var pesoRedondeado = Math.round(calculo);
-    return pesoRedondeado +' kg';
-  }
   crearSemana1 = (marcas: MarcasModel) => {
     
     var semana1: SemanaModel = new SemanaModel;
@@ -359,5 +349,17 @@ export class ProgramacionesService {
     ejercicio.pesoReps = listaPesoReps;
     return ejercicio;
   } 
+
+  sumarDias = (fecha: Date, d:number) => {
+    var fechaFinal = new Date(fecha);
+    fechaFinal.setDate( fechaFinal.getDate() + d );
+    return fechaFinal;
+  }
+
+  calcularPeso(value: number, porcentaje: number): string {
+    var calculo = (value * porcentaje) / 100;
+    var pesoRedondeado = Math.round(calculo);
+    return pesoRedondeado +'kg';
+  }
 
 }

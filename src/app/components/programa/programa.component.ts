@@ -24,6 +24,7 @@ export class ProgramaComponent implements OnInit {
                private programacionesService: ProgramacionesService,
                private marcasService: MarcasService) { }
 
+
   ngOnInit(): void {
     this.auth.user$.subscribe(
       (profile) => {
@@ -40,14 +41,13 @@ export class ProgramaComponent implements OnInit {
             this.marcas = marcasObetnidas;
           });
       });
-
   }
 
   calcularMPSentadilla(value){
     if(value == ""){
       this.sentadillaMaximaProyectada = "";  
     } else {
-      this.sentadillaMaximaProyectada = (this.marcas.sentadilla * value).toFixed(0).toString() + " Kg";
+      this.sentadillaMaximaProyectada = (this.marcas.sentadilla * value).toFixed(0).toString() + " kg";
     }
   }
 
@@ -55,7 +55,7 @@ export class ProgramaComponent implements OnInit {
     if(value == ""){
       this.pressBancaMaximaProyectada = "";  
     } else {
-      this.pressBancaMaximaProyectada = (this.marcas.pressBanca * value).toFixed(0).toString() + " Kg";
+      this.pressBancaMaximaProyectada = (this.marcas.pressBanca * value).toFixed(0).toString() + " kg";
     }
   }
 
@@ -63,7 +63,7 @@ export class ProgramaComponent implements OnInit {
     if(value == ""){
       this.pesoMuertoMaximaProyectada = "";  
     } else {
-      this.pesoMuertoMaximaProyectada = (this.marcas.pesoMuerto * value).toFixed(0).toString() + " Kg";
+      this.pesoMuertoMaximaProyectada = (this.marcas.pesoMuerto * value).toFixed(0).toString() + " kg";
     }
   }
 
