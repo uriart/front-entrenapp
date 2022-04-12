@@ -1,8 +1,8 @@
-import { PesoRepsModel } from "./pesoReps.model";
+import { SeriesModel } from "./pesoReps.model";
 
 export class EjercicioModel {
 
     nombreEjercicio: string;
-    pesoReps: PesoRepsModel[];
+    pesoReps: SeriesModel[];
 
 }

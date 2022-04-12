@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
+import {environment as env} from '../environments/environment';
 registerLocaleData(localeEs, 'es');
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,16 +12,15 @@ import { HomeComponent } from './components/home/home.component';
 import { ProgramaComponent } from './components/programa/programa.component';
 import { MarcasComponent } from './components/marcas/marcas.component';
 
-import { AuthModule } from '@auth0/auth0-angular';
+import { AuthModule, AuthHttpInterceptor } from '@auth0/auth0-angular';
 import { MatTabsModule } from '@angular/material/tabs';
-import { HttpClientModule } from '@angular/common/http';
-import { TooltipModule } from 'ng2-tooltip-directive';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CalculoPesoPipe } from './pipes/calculo-peso.pipe';
 import { LibretaComponent } from './components/libreta/libreta.component';
-
+import { eventNames } from 'process';
 
 @NgModule({
   declarations: [
@@ -37,19 +37,24 @@ import { LibretaComponent } from './components/libreta/libreta.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    TooltipModule,
     MatTabsModule,
     BrowserAnimationsModule,
     AuthModule.forRoot({
-      domain: 'dev-r071w8pk.eu.auth0.com',
-      clientId: '1oVAezqLX77ftKY3aKHX3Cr86ag2guga',
-      redirectUri: window.location.origin + '/programa-powerlifting'
+      ...env.auth,
+      httpInterceptor: {
+        allowedList: [ `${env.dev.apiUrl}/powerlifting/program` ]
+      }
     }),
   ],
   providers: [
     {
       provide: LOCALE_ID,
       useValue: 'es'
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]

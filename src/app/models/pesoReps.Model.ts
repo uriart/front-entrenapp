@@ -1,4 +1,4 @@
-export class PesoRepsModel {
+export class SeriesModel {
 
     peso: string;
     repeticiones: string;

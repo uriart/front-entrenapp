@@ -1,8 +1,8 @@
 import { SemanaModel } from "./semana.model";
 
-export class CanditoModel {
+export class ProgramaPowerliftingModel {
 
-    titulo: string = "Programa Candito 6 semanas";
+    titulo: string;
     semana: SemanaModel[];
 
 }

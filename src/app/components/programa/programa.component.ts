@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
-import { CanditoModel } from 'src/app/models/candito.model';
+import { ProgramaPowerliftingModel } from 'src/app/models/candito.model';
 import { ProgramacionesService } from 'src/app/services/programaciones.service';
 import { MarcasService } from 'src/app/services/marcas.service';
 import { MarcasModel } from 'src/app/models/marcas.model';
@@ -14,7 +14,7 @@ import { MarcasModel } from 'src/app/models/marcas.model';
 export class ProgramaComponent implements OnInit {
 
   idUsuario: string = null;
-  programaCandito: CanditoModel = new CanditoModel;
+  programaCandito: ProgramaPowerliftingModel = new ProgramaPowerliftingModel;
   marcas: MarcasModel = new MarcasModel;
   sentadillaMaximaProyectada: string = "";
   pressBancaMaximaProyectada: string = "";
@@ -33,15 +33,22 @@ export class ProgramaComponent implements OnInit {
         this.idUsuario = JSON.stringify(profile.sub, null, 2);
 
         //Llamar al servicio para obtener lan programación candito. Enviar el idUsuario por parámetro
-        this.programaCandito = this.programacionesService.generarProgramacionCandito( this.idUsuario );
+        this.cargarPrograma();
         
-        //Recogemos las marcas del usuario
-        this.marcasService.getMarcas( this.idUsuario )
-          .subscribe( (marcasObetnidas: MarcasModel)  => {
-            this.marcas = marcasObetnidas;
-          });
       });
   }
+
+  cargarPrograma(): void {
+    this.programacionesService.obtenerProgramacionCandito( this.idUsuario ).subscribe(
+      data => {
+        this.programaCandito = data;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
 
   calcularMPSentadilla(value){
     if(value == ""){

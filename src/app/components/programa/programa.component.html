@@ -10,7 +10,7 @@
             <div class="row row-cols-md-2 g-4">
                 <div *ngFor="let dia of semana.dias" class="col">
                     <div class="card border-dark mb-3">
-                        <div class="card-header">{{ dia.fechaDia | date: 'EEEE, d MMMM y' }}</div>
+                        <div class="card-header">{{ dia.fechaDia }}</div>
                         <div class="card-body text-dark">
                             <table class="table table-striped table-hover">
                                 <thead>
@@ -26,7 +26,7 @@
                                     <tr *ngFor="let ejercicio of dia.ejercicios">
                                         <ng-container *ngIf="ejercicio.nombreEjercicio != 'colspan5'">
                                             <th scope="row">{{ejercicio.nombreEjercicio}}</th>
-                                            <td *ngFor="let pesoReps of ejercicio.pesoReps" [ngSwitch]="pesoReps.repeticiones">
+                                            <td *ngFor="let pesoReps of ejercicio.series" [ngSwitch]="pesoReps.repeticiones">
                                                 <div *ngSwitchCase="' MR'">
                                                     {{ pesoReps.peso }}
                                                     <span class="badge rounded-pill bg-info text-dark" tooltip="Máximas repeticiones" placement="top">{{ pesoReps.repeticiones }}</span>

@@ -9,11 +9,12 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class NavbarComponent implements OnInit {
 
-  callback = window.location.origin + '/programa-powerlifting';
+  callback = window.location.origin;
 
   constructor( public auth:AuthService ) { }
 
   ngOnInit(): void {
+    
   }
 
 }
