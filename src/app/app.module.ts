@@ -20,7 +20,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CalculoPesoPipe } from './pipes/calculo-peso.pipe';
 import { LibretaComponent } from './components/libreta/libreta.component';
-import { eventNames } from 'process';
 
 @NgModule({
   declarations: [
