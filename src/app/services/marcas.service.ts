@@ -1,22 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { MarcasModel } from '../models/marcas.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MarcasService {
 
-  private url = 'https://prueba-71332-default-rtdb.europe-west1.firebasedatabase.app';
-
   constructor( private http: HttpClient ) { }
 
-  crearMarcas( marcas: MarcasModel , idUsuario: string) {
-    return this.http.put(`${ this.url }/users/${ idUsuario }/marcas.json`, marcas);
+  crearMarcas( marcas: MarcasModel , idUsuario: string): Observable<MarcasModel> {
+    marcas.usuario = idUsuario;
+    return this.http.post<MarcasModel>(`${ environment.dev.apiUrl }/powerlifting/marcas`, marcas);
   }
 
-  getMarcas(idUsuario: string){
-    return this.http.get(`${ this.url }/users/${ idUsuario }/marcas.json`);
+  getMarcas(idUsuario: string): Observable<MarcasModel> {
+    return this.http.get<MarcasModel>(`${ environment.dev.apiUrl }/powerlifting/marcas?user=${idUsuario}`);
   }
 
 

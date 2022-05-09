@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MarcasComponent } from './components/marcas/marcas.component';
 import { ProgramaComponent } from './components/programa/programa.component';
 import { LibretaComponent } from './components/libreta/libreta.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -22,6 +23,11 @@ const routes: Routes = [
   { 
     path: 'libreta', 
     component: LibretaComponent,
+    canActivate: [ AuthGuard ]
+  },  
+  { 
+    path: 'perfil', 
+    component: PerfilComponent,
     canActivate: [ AuthGuard ]
   },
   { path: '**', pathMatch: 'full', redirectTo: 'home'}

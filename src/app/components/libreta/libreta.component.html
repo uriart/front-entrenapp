@@ -4,26 +4,42 @@
 </div>
 
 <div class="row form-floating mt-4" *ngFor="let nota of notas, let i = index">
+  <div class="col-10">
+    <textarea disabled class="form-control" placeholder="Escribe un comentario" >{{ nota.nota }}</textarea>
+  </div>
+  <div class="col mt-4">
+    <a class="fas fa-trash-alt fa-lg" style="color:red" href="javascript:void(0);" (click)="eliminarNota( nota.id )"></a>
+    <a class="fas fa-edit fa-lg" href="javascript:void(0);" (click)="editarNota( nota )" data-bs-toggle="modal" data-bs-target="#nuevaNota"></a>
+  </div>
+</div>
 
+<button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#nuevaNota">
+  <i class="fas fa-plus fa-2x"></i> 
+</button>
 
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" id="nuevaNota">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
+      <form autocomplete="off" (ngSubmit)="guardarNota( forma )" #forma="ngForm">
+        <div class="modal-header">
+          <h5 class="modal-title">Añadir</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <input type="text" class="form-control" placeholder="Escribe un comentario"
+            name="nota" 
+            [ngModel]="notaObj.nota" 
+            #nota="ngModel">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="limpiarForm()">Cerrar</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" >Guardar</button>
+        </div>
+      </form>
 
-          <div class="col-10">
-            <textarea class="form-control" placeholder="Escribe un comentario" >{{ nota }}</textarea>
-          </div>
-          <div class="col mt-4">
-            <a class="fas fa-trash-alt fa-lg" style="color:red" href="javascript:void(0);" (click)="eliminarNota(i)"></a>
-          </div>
-
-
-
+    </div>
+  </div>
 </div>
 
 
-
-
-
-
-
-
-<button type="button" class="btn btn-primary center mt-3" (click)="nuevaNota()"><i class="fas fa-plus fa-2x"></i></button>

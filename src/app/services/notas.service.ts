@@ -1,22 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Nota } from '../models/nota.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotasService {
 
-  private url = 'https://prueba-71332-default-rtdb.europe-west1.firebasedatabase.app';
-
   constructor( private http: HttpClient ) { }
 
   getNotas(idUsuario: string){
-    return this.http.get(`${ this.url }/users/${ idUsuario }/notas.json`);
+    return this.http.get<Nota[]>(`${ environment.dev.apiUrl }/powerlifting/getNotesByUser?user=${idUsuario}`);
   }
 
-  nuevaNota(notas: string[], idUsuario: string){
-    notas.push("");
-    return this.http.put(`${ this.url }/users/${ idUsuario }/notas.json` , notas);
+  deleteNotaById(idNota: number){
+    return this.http.delete(`${ environment.dev.apiUrl }/powerlifting/deleteNota?id=${idNota}`);
+  }
+
+  guardarNota(notaObj: Nota){
+    return this.http.post<Nota>(`${ environment.dev.apiUrl }/powerlifting/saveNota`, notaObj);
   }
 
 }

@@ -1,9 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { LOCALE_ID, NgModule } from '@angular/core';
-import localeEs from '@angular/common/locales/es';
-import { registerLocaleData } from '@angular/common';
+import { NgModule } from '@angular/core';
 import {environment as env} from '../environments/environment';
-registerLocaleData(localeEs, 'es');
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,9 +14,13 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TooltipModule } from 'ng2-tooltip-directive';
 
 import { CalculoPesoPipe } from './pipes/calculo-peso.pipe';
 import { LibretaComponent } from './components/libreta/libreta.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { SpinnerModule } from './components/spinner/spinner.module';
+import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,11 +30,13 @@ import { LibretaComponent } from './components/libreta/libreta.component';
     ProgramaComponent,
     MarcasComponent,
     CalculoPesoPipe,
-    LibretaComponent
+    LibretaComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    TooltipModule,
     AppRoutingModule,
     HttpClientModule,
     MatTabsModule,
@@ -41,18 +44,20 @@ import { LibretaComponent } from './components/libreta/libreta.component';
     AuthModule.forRoot({
       ...env.auth,
       httpInterceptor: {
-        allowedList: [ `${env.dev.apiUrl}/powerlifting/program` ]
+        allowedList: [ `${env.dev.apiUrl}/powerlifting/*` ]
       }
     }),
+    SpinnerModule
   ],
   providers: [
     {
-      provide: LOCALE_ID,
-      useValue: 'es'
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthHttpInterceptor,
+      useClass: SpinnerInterceptor,
       multi: true
     }
   ],

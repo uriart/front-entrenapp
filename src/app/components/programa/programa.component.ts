@@ -7,8 +7,7 @@ import { MarcasModel } from 'src/app/models/marcas.model';
 
 @Component({
   selector: 'app-programa',
-  templateUrl: './programa.component.html',
-  styleUrls: ['./programa.component.css']
+  templateUrl: './programa.component.html'
 })
 
 export class ProgramaComponent implements OnInit {
@@ -21,20 +20,17 @@ export class ProgramaComponent implements OnInit {
   pesoMuertoMaximaProyectada: string = "";
 
   constructor( public auth: AuthService,
-               private programacionesService: ProgramacionesService,
+               public programacionesService: ProgramacionesService,
                private marcasService: MarcasService) { }
 
 
   ngOnInit(): void {
     this.auth.user$.subscribe(
       (profile) => {
-
         //Obtenemos el identificador del usuario
-        this.idUsuario = JSON.stringify(profile.sub, null, 2);
-
-        //Llamar al servicio para obtener lan programación candito. Enviar el idUsuario por parámetro
+        this.idUsuario = profile.sub.replace('|' ,'').replace('-','');
+        //Llamar al servicio para obtener el programa de entrenamiento en json. Enviar el idUsuario por parámetro
         this.cargarPrograma();
-        
       });
   }
 

@@ -69,15 +69,15 @@
             <div class="input-group mb-1">
                 <select class="form-select" 
                         aria-label="Default select example" 
-                        name="ejercicioHombro"
+                        name="codigoHombro"
                         required
-                        [class.is-invalid]="ejercicioHombro.invalid && ejercicioHombro.touched"
-                        [ngModel]="marcas.ejercicioHombro" 
-                        #ejercicioHombro="ngModel">
-                    <option value="Press militar">Press Militar</option>
-                    <option value="Press mancuerna de pie">Press mancuerna de pie</option>
-                    <option value="Press mancuerna sentado">Press mancuerna sentado</option>
-                    <option value="Elevación lateral de mancuerna">Elevación lateral de mancuerna</option>
+                        [class.is-invalid]="codigoHombro.invalid && codigoHombro.touched"
+                        [ngModel]="marcas.codigoHombro" 
+                        #codigoHombro="ngModel">
+                    <option value="M">Press Militar</option>
+                    <option value="P">Press mancuerna de pie</option>
+                    <option value="S">Press mancuerna sentado</option>
+                    <option value="E">Elevación lateral de mancuerna</option>
                 </select>
             </div>
         </div>
@@ -89,14 +89,14 @@
             <div class="input-group mb-1">
                 <select class="form-select" 
                         aria-label="Default select example" 
-                        name="espalda1"
+                        name="codigoEspalda1"
                         required
-                        [class.is-invalid]="espalda1.invalid && espalda1.touched"
-                        [ngModel]="marcas.espalda1"
-                        #espalda1="ngModel">
-                    <option value="Remo con mancuera">Remo con mancuera</option>
-                    <option value="Remo con barra">Remo con barra</option>
-                    <option value="Remo en máquina">Remo en máquina</option>
+                        [class.is-invalid]="codigoEspalda1.invalid && codigoEspalda1.touched"
+                        [ngModel]="marcas.codigoEspalda1"
+                        #codigoEspalda1="ngModel">
+                    <option value="R">Remo con mancuera</option>
+                    <option value="F">Remo con barra</option>
+                    <option value="X">Remo en máquina</option>
                     </select>
             </div>
         </div>
@@ -108,14 +108,14 @@
             <div class="input-group mb-1">
                 <select class="form-select" 
                         aria-label="Default select example" 
-                        name="espalda2"
+                        name="codigoEspalda2"
                         required
-                        [class.is-invalid]="espalda2.invalid && espalda2.touched"
-                        [ngModel]="marcas.espalda2"
-                        #espalda2="ngModel">
-                    <option value="Dominadas lastradas">Dominadas lastradas</option>
-                    <option value="Dominadas agarre inverso">Dominadas agarre inverso</option>
-                    <option value="Jalón al pecho">Jalón al pecho</option>
+                        [class.is-invalid]="codigoEspalda2.invalid && codigoEspalda2.touched"
+                        [ngModel]="marcas.codigoEspalda2"
+                        #codigoEspalda2="ngModel">
+                    <option value="D">Dominadas lastradas</option>
+                    <option value="I">Dominadas agarre inverso</option>
+                    <option value="J">Jalón al pecho</option>
                     </select>
             </div>
         </div>
@@ -131,7 +131,7 @@
                         name="fechaInicio"
                         required
                         [class.is-invalid]="fechaInicio.invalid && fechaInicio.touched"
-                        [ngModel]="marcas.fechaInicio | date:'yyyy-MM-dd'"
+                        [ngModel]="marcas.fechaInicio"
                         #fechaInicio="ngModel">
             </div>
         </div>

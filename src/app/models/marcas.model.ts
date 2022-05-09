@@ -1,11 +1,16 @@
 export class MarcasModel {
 
-    sentadilla: number;
-    pressBanca: number;
+    codigoEspalda1: string;
+    codigoEspalda2: string;
+    codigoHombro: string;
+    descripcionEspalda1: string;
+    descripcionEspalda2: string;
+    descripcionHombro: string;
+    fechaInicio: Date;
     pesoMuerto: number;
-    ejercicioHombro: string = '';
-    espalda1: string = '';
-    espalda2: string= '';
-    fechaInicio: Date = new Date();
+    pressBanca: number;
+    sentadilla: number;
+    usuario: string;
+
 
 }

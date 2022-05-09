@@ -3,18 +3,17 @@ import { HttpClient } from '@angular/common/http';
 
 import { ProgramaPowerliftingModel } from '../models/candito.model';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProgramacionesService {
 
-  url = 'http://localhost:8080/';
-
   constructor(private httpClient: HttpClient) { }
 
   obtenerProgramacionCandito(idUsuario: string): Observable<ProgramaPowerliftingModel> {
-    return this.httpClient.get<ProgramaPowerliftingModel>(this.url + 'powerlifting/program?user=USER4');
+    return this.httpClient.get<ProgramaPowerliftingModel>( `${environment.dev.apiUrl}/powerlifting/program?user=${idUsuario}` );
   }
 
 }

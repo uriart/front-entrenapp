@@ -1,7 +1,7 @@
 
 <h1>{{programaCandito.titulo}}</h1>
-<hr>
-<mat-tab-group animationDuration="0ms">
+<br>
+<mat-tab-group animationDuration="10ms" dynamicHeight>
     <mat-tab *ngFor="let semana of programaCandito.semana, let i = index" label="Semana {{i+1}}">
 
         <ng-container *ngIf="i != 5">
@@ -45,7 +45,7 @@
                                             </td>
                                         </ng-container>
                                         <ng-container *ngIf="ejercicio.nombreEjercicio == 'colspan5'">
-                                            <td *ngFor="let pesoReps of ejercicio.pesoReps" colspan="5" [ngSwitch]="pesoReps.repeticiones">
+                                            <td *ngFor="let pesoReps of ejercicio.series" colspan="5" [ngSwitch]="pesoReps.repeticiones">
                                                 <div *ngSwitchCase="'info1'">
                                                     Añade {{ pesoReps.peso }} y realiza 5 series x 3 repeticiones cada serie, con 60 segundos de descanso entre series.
                                                     (Si no has podido realizar un mínimo de 8 repeticiones en la 
@@ -153,4 +153,3 @@
 
     </mat-tab>
 </mat-tab-group>
-

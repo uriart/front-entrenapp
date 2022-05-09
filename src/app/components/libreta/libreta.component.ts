@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AuthService } from '@auth0/auth0-angular';
+import { Nota } from 'src/app/models/nota.model';
 import { NotasService } from 'src/app/services/notas.service';
 
 @Component({
   selector: 'app-libreta',
   templateUrl: './libreta.component.html',
-  styleUrls: ['./libreta.component.css']
+  styleUrls: ['../../app.component.css']
 })
 export class LibretaComponent implements OnInit {
 
   idUsuario: string = null;
-  notas: string[] = [""];
+  notas: Nota[];
+  notaObj = new Nota;
 
   constructor(public auth: AuthService,
               private notasService: NotasService) { }
@@ -18,21 +21,10 @@ export class LibretaComponent implements OnInit {
   ngOnInit(): void {
     this.auth.user$.subscribe(
       (profile) => {
-        (this.idUsuario = JSON.stringify(profile.sub, null, 2))
+        this.idUsuario = profile.sub.replace('|' ,'').replace('-','');
         this.recuperarNotas();
       }
     );
-  }
-
-  nuevaNota(): void {
-    this.notasService.nuevaNota( this.notas, this.idUsuario )
-    .subscribe( resp => {
-      this.recuperarNotas();
-    });
-  }
-
-  eliminarNota(index: number): void {
-    console.log(index);
   }
 
   recuperarNotas():void {
@@ -44,10 +36,34 @@ export class LibretaComponent implements OnInit {
           ...this.notas
         };
         notasTemp = resp;
-        this.notas = notasTemp;
+        this.notas = notasTemp.sort((a, b) => a.id - b.id);
       }    
     });
   }
 
+  eliminarNota(idNota: number): void {
+    this.notasService.deleteNotaById( idNota )
+    .subscribe(response => {
+      this.notas = this.notas.filter(item => item.id !== idNota);
+    });
+  }
+
+  guardarNota(forma: NgForm): void {
+    this.notaObj.nota = forma.value.nota;
+    this.notaObj.usuario = this.idUsuario;
+    this.notasService.guardarNota( this.notaObj )
+    .subscribe(response => {
+      this.recuperarNotas();
+      this.limpiarForm();
+    });
+  }
+
+  editarNota(nota: Nota): void {
+    this.notaObj = nota;
+  }
+
+  limpiarForm(): void {
+    this.notaObj = new Nota;
+  }
 
 }
