@@ -1,6 +1,6 @@
 {
-  "name": "authapp",
-  "version": "0.0.0",
+  "name": "front-program",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
