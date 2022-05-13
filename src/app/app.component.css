@@ -77,3 +77,27 @@
     width: 10rem; 
     height: 10rem;
   }
+
+  html, body {
+    height: 100%;
+  }
+  
+  #app {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-direction: column
+  }
+  
+  app-navbar {
+    flex: 0 0 50px;
+  }
+  
+  .content {
+    flex: 1;
+  }
+  
+  footer {
+    flex: 0 0 50px;
+  }
