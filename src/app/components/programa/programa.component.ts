@@ -5,7 +5,6 @@ import { ProgramacionesService } from 'src/app/services/programaciones.service';
 import { MarcasService } from 'src/app/services/marcas.service';
 import { MarcasModel } from 'src/app/models/marcas.model';
 import { AlertsService } from 'src/app/services/alerts.service';
-import { DateTime } from "luxon";
 
 @Component({
   selector: 'app-programa',

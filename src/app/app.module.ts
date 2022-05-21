@@ -21,7 +21,7 @@ import { LibretaComponent } from './components/libreta/libreta.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { SpinnerModule } from './components/spinner/spinner.module';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({

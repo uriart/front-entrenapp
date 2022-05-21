@@ -92,6 +92,7 @@
   
   app-navbar {
     flex: 0 0 50px;
+    z-index: 5;
   }
   
   .content {
@@ -100,4 +101,18 @@
   
   footer {
     flex: 0 0 50px;
+  }
+
+  footer div{
+    background-color:  #04647C;
+    color: rgba(255,255,255,.55);
+  }
+
+  footer a {
+    color:rgba(255,255,255,.55);
+  }
+
+  footer a:hover {
+    color:rgb(201, 181, 0);
+    font-weight: 500;
   }
