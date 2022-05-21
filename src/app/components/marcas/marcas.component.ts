@@ -4,23 +4,26 @@ import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { MarcasModel } from 'src/app/models/marcas.model';
 import { MarcasService } from 'src/app/services/marcas.service';
-import  Swal  from 'sweetalert2';
 import { DateTime } from "luxon";
+import { AlertsService } from "../../services/alerts.service";
 
 @Component({
   selector: 'app-marcas',
   templateUrl: './marcas.component.html',
-  styles: [
-  ]
+  styleUrls: ['../../app.component.css']
 })
 export class MarcasComponent implements OnInit {
 
   marcas = new MarcasModel;
   idUsuario: string = null;
+  alertType = "alert-success";
+  alertMsg: string = null;
+  alertStatus = "visually-hidden";
+  alertIcon = "Info";
 
   constructor(  public auth: AuthService,
                 private marcasService: MarcasService,
-                private router:Router ) { }
+                private alerta:AlertsService ) { }
 
   ngOnInit(): void {
     this.auth.user$.subscribe(
@@ -40,13 +43,10 @@ export class MarcasComponent implements OnInit {
 
             this.marcas = marcasTemp;
           } else {
-            Swal.fire({
-              title:'Bienvenido',
-              text: 'Introduzca sus marcas para generar el programa de entrenamiento',
-              icon: 'info',
-              showConfirmButton: true
-            });
-
+            this.alerta.showInfo(
+              'Introduzca sus marcas para generar el programa de entrenamiento',
+              'Atención'
+            );
           }
         });
       }
@@ -67,12 +67,10 @@ export class MarcasComponent implements OnInit {
     forma.value.fechaInicio = this.fromJsonDate(forma.value.fechaInicio);
     this.marcasService.crearMarcas( forma.value, this.idUsuario )
       .subscribe( resp => {
-        Swal.fire({
-          title:'Actualizado correctamente',
-          html: `Dirigete al <a class="link" [routerLink]="[ '../programa']"><i class="far fa-calendar-alt"> </i>Programa</a> para ver los cambios`,
-          icon: 'success',
-          showConfirmButton: true
-        });
+        this.alerta.showSucces(
+          'Dirigete al Programa para ver los cambios',
+          'Actualizado correctamente'
+        );
       });
   }
 

@@ -4,6 +4,8 @@ import { ProgramaPowerliftingModel } from 'src/app/models/candito.model';
 import { ProgramacionesService } from 'src/app/services/programaciones.service';
 import { MarcasService } from 'src/app/services/marcas.service';
 import { MarcasModel } from 'src/app/models/marcas.model';
+import { AlertsService } from 'src/app/services/alerts.service';
+import { DateTime } from "luxon";
 
 @Component({
   selector: 'app-programa',
@@ -21,7 +23,8 @@ export class ProgramaComponent implements OnInit {
 
   constructor( public auth: AuthService,
                public programacionesService: ProgramacionesService,
-               private marcasService: MarcasService) { }
+               private marcasService: MarcasService,
+               private alerta:AlertsService) { }
 
 
   ngOnInit(): void {
@@ -31,6 +34,7 @@ export class ProgramaComponent implements OnInit {
         this.idUsuario = profile.sub.replace('|' ,'').replace('-','');
         //Llamar al servicio para obtener el programa de entrenamiento en json. Enviar el idUsuario por parámetro
         this.cargarPrograma();
+        this.getMarcas();
       });
   }
 
@@ -40,11 +44,23 @@ export class ProgramaComponent implements OnInit {
         this.programaCandito = data;
       },
       err => {
-        console.log(err);
+        this.alerta.showError( err.message, 'Error' );
       }
     );
   }
 
+  getMarcas(): void {
+    this.marcasService.getMarcas( this.idUsuario )
+    .subscribe( resp  => {
+      if(null != resp){
+        var marcasTemp: any = {
+          ...this.marcas
+        };
+        marcasTemp = resp;
+        this.marcas = marcasTemp;
+      }
+    });
+  }
 
   calcularMPSentadilla(value){
     if(value == ""){

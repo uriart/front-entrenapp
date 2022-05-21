@@ -21,6 +21,8 @@ import { LibretaComponent } from './components/libreta/libreta.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { SpinnerModule } from './components/spinner/spinner.module';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
+import { FooterComponent } from './footer/footer.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
     MarcasComponent,
     CalculoPesoPipe,
     LibretaComponent,
-    PerfilComponent
+    PerfilComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
         allowedList: [ `${env.dev.apiUrl}/powerlifting/*` ]
       }
     }),
-    SpinnerModule
+    SpinnerModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     {
