@@ -41,8 +41,7 @@ export class ProgramaComponent implements OnInit {
     this.programacionesService.obtenerProgramacionCandito( this.idUsuario ).subscribe(
       data => {
         this.programaCandito = data;
-      },
-      err => {
+      }, err => {
         this.alerta.showError( err.message, 'Error' );
       }
     );

@@ -15,14 +15,15 @@
   </div>
 </div>
 
-<button type="button" class="btn btn-primary mt-3 position-relative start-50" data-bs-toggle="modal" data-bs-target="#nuevaNota">
-  <i class="fas fa-plus fa-2x"></i> 
-</button>
+<div class="mt-3 row justify-content-center">
+  <button type="button" class="btn btn-primary col-3 col-lg-1" data-bs-toggle="modal" data-bs-target="#nuevaNota" >
+    <i class="fas fa-plus fa-2x"></i> 
+  </button>
+</div>
 
 <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" id="nuevaNota">
   <div class="modal-dialog">
     <div class="modal-content">
-
       <form autocomplete="off" (ngSubmit)="guardarNota( forma )" #forma="ngForm">
         <div class="modal-header">
           <h5 class="modal-title">Añadir</h5>
@@ -39,7 +40,6 @@
           <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" >Guardar</button>
         </div>
       </form>
-
     </div>
   </div>
 </div>

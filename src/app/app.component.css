@@ -116,3 +116,13 @@
     color:rgb(201, 181, 0);
     font-weight: 500;
   }
+
+  .carta {
+    background: linear-gradient(#04647C, #648454);
+    height: 300px;
+    color: rgba(255,255,255,.55);
+  }
+
+  .carta:hover {
+    background: linear-gradient(#648454, #04647C);
+  }

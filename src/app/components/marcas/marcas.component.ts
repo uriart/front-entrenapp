@@ -71,6 +71,8 @@ export class MarcasComponent implements OnInit {
           'Dirigete al Programa para ver los cambios',
           'Actualizado correctamente'
         );
+      }, err => {
+        this.alerta.showError( err.message, 'Error' );
       });
   }
 
