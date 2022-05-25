@@ -1,4 +1,4 @@
-name: Nombre workflow
+name: Deployment pipeline
 
 on:
   push:
@@ -6,8 +6,14 @@ on:
       - master
 
 jobs:
-  hello_world:
+  deploy:
     runs-on: ubuntu-18.04
     steps:
-      - name: Echo del mensaje
-        run: echo 'Hello world'
+      - uses: actions/chckout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm install
