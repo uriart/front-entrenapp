@@ -20,10 +20,10 @@ jobs:
       - name: Build
         run: npm run build
       - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
+          : akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP}}
           heroku_email: ${{secrets.HEROKU_API_EMAIL}}
-          healthcheck: "https://${{secrets.HEROKU_APP}}/home"
+          healthcheck: "https://${{secrets.HEROKU_APP}}herokuapp.com/home"
           rollbackonhealthcheckfailed: true
