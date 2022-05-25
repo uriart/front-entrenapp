@@ -1,0 +1,13 @@
+name: Nombre workflow
+
+on:
+  push:
+    branches: 
+      - master
+
+jobs:
+  hello_world:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Echo del mensaje
+        run: echo 'Hello world'
