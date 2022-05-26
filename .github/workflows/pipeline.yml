@@ -6,13 +6,18 @@ on:
       - master
 
 jobs:
-  deploy:
+
+  avoid_reduncy:
     runs-on: ubuntu-18.04
     steps:
       - name: Cancel Previous Redundant Builds
         uses: styfle/cancel-workflow-action@0.9.1
         with: 
           access_token: ${{ github.token }}
+
+  build:
+    runs-on: ubuntu-18.04
+    steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
@@ -20,11 +25,40 @@ jobs:
         with:
           node-version: 14
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Build
         run: npm run build
+      - uses: action/upload-artifact@v2
+        with:
+          name: dist
+          path: dist
+
+  test:
+    needs: [build]
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm ci
+      - uses: action/download-artifact@v2
+        with:
+          name: dist
+          path: dist
       - name: Test
         run: npm test
+
+  deploy:
+    needs: [test]
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
