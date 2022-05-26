@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthModule } from '@auth0/auth0-angular';
-import { AppComponent } from './app.component';
-import authConf from '../../auth_config.json';
+import authConf from '../../../../auth_config.json';
+import { PerfilComponent } from './perfil.component';
 
-describe('AppComponent', () => {
+describe('PerfilComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -15,21 +15,15 @@ describe('AppComponent', () => {
         }),
       ],
       declarations: [
-        AppComponent
+        PerfilComponent
       ],
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it('should create perfil component', () => {
+    const fixture = TestBed.createComponent(PerfilComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'entrenApp'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('entrenApp');
-  });
-  
 });
