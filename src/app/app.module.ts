@@ -14,7 +14,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TooltipModule } from 'ng2-tooltip-directive';
+import { TooltipModule } from 'ng2-tooltip-directive-ng13fix';
 
 import { CalculoPesoPipe } from './pipes/calculo-peso.pipe';
 import { LibretaComponent } from './components/libreta/libreta.component';
