@@ -3,5 +3,5 @@
     "clientId": "aZr46as8jeMqGYrP7dvk90wqIWc2upBy",
     "audience": "https://users-api-test2.herokuapp.com/",
     "apiUrl": "http://localhost:8080",
-    "apiUrlPro": "http://217.160.209.233:8080"
+    "apiUrlPro": "https://api-powerlifting.sytes.net"
 }
