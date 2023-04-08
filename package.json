@@ -30,7 +30,7 @@
     "@auth0/auth0-spa-js": "^1.21.0",
     "async": "^3.2.3",
     "express": "^4.17.1",
-    "luxon": "^2.3.2",
+    "luxon": "^2.5.2",
     "ng2-tooltip-directive-ng13fix": "2.10.1",
     "ngx-bootstrap": "^6.2.0",
     "ngx-toastr": "^14.3.0",
