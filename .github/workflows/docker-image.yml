@@ -25,12 +25,12 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: uriart/front-entrenapp:1.0.0
+          images: uriart/front-entrenapp
 
       - name: Build the Docker image
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.output.tags }}
+          tags: 1.0.0
           labels: ${{ steps.meta.output.labels }}
