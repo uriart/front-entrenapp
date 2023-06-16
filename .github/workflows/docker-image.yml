@@ -28,7 +28,7 @@ jobs:
           images: uriart/front-entrenapp
 
       - name: Build the Docker image
-        uses: docker/build-push-action
+        uses: docker/build-push-action@v4
         with:
           context: .
           push: true
