@@ -25,7 +25,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: uriart/front-entrenapp
+          images: uriart/front-entrenapp:1.0.0
 
       - name: Build the Docker image
         uses: docker/build-push-action@v4
