@@ -1,15 +1,13 @@
-import authConf from '../../auth_config.json';
-
 export const environment = {
-  production: false,
+  production: true,
   auth: {
-    domain: authConf.domain,
-    clientId: authConf.clientId,
+    domain: process.env.AUTH_ISSUER,
+    clientId: process.env.CLIENT_ID,
     redirectUri: window.location.origin,
-    audience : authConf.audience
+    audience : process.env.AUTH_AUDIENCE
   },
   dev: {
-    apiUrl: authConf.apiUrl
+    apiUrl: "entrenapp-api:8080"
   }
 };
 
