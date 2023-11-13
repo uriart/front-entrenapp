@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthModule } from '@auth0/auth0-angular';
-import authConf from '../../../../auth_config.json';
+import { environment } from '../../../environments/environment';
 import { MarcasComponent } from './marcas.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MarcasService } from 'src/app/services/marcas.service';
@@ -17,8 +17,8 @@ describe('MarcasComponent', () => {
         FormsModule,
         ToastrModule.forRoot(),
         AuthModule.forRoot({
-          domain: authConf.domain,
-          clientId: authConf.clientId,
+          domain: environment.auth.domain,
+          clientId: environment.auth.clientId,
         }),
       ],
       declarations: [

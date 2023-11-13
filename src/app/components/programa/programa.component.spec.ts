@@ -3,10 +3,9 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthModule } from '@auth0/auth0-angular';
 import { ToastrModule } from 'ngx-toastr';
-import { AlertsService } from 'src/app/services/alerts.service';
 import { MarcasService } from 'src/app/services/marcas.service';
 import { ProgramacionesService } from 'src/app/services/programaciones.service';
-import authConf from '../../../../auth_config.json';
+import { environment } from '../../../environments/environment';
 import { ProgramaComponent } from './programa.component';
 
 describe('ProgramaComponent', () => {
@@ -17,8 +16,8 @@ describe('ProgramaComponent', () => {
         HttpClientTestingModule,
         ToastrModule.forRoot(),
         AuthModule.forRoot({
-          domain: authConf.domain,
-          clientId: authConf.clientId,
+          domain: environment.auth.domain,
+          clientId: environment.auth.clientId,
         }),
       ],
       declarations: [
