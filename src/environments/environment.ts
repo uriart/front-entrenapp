@@ -1,13 +1,13 @@
 export const environment = {
   production: true,
   auth: {
-    domain: process.env.AUTH_ISSUER,
-    clientId: process.env.CLIENT_ID,
+    domain: window['env']['AUTH_ISSUER'],
+    clientId: window['env']['CLIENT_ID'],
     redirectUri: window.location.origin,
-    audience : process.env.AUTH_AUDIENCE
+    audience : window['env']['AUTH_AUDIENCE']
   },
   dev: {
-    apiUrl: "entrenapp-api:8080"
+    apiUrl: 'entrenapp-api:8080'
   }
 };
 
