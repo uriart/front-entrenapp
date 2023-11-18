@@ -9,7 +9,4 @@ RUN npm run build
 # Etapa de producción
 FROM nginx:alpine
 WORKDIR /usr/share/nginx/html
-COPY --from=build /app/dist /usr/share/nginx/html
-
-# Configurar Nginx para manejar rutas desconocidas
-COPY nginx-custom.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist/authapp /usr/share/nginx/html
