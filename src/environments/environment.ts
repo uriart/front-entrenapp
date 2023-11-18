@@ -7,7 +7,7 @@ export const environment = {
     audience: 'https://users-api-test2.herokuapp.com/'
   },
   dev: {
-    apiUrl: 'entrenapp-backend-service:8080'
+    apiUrl: 'https://uriart.sytes.net/api'
   }
 };
 
