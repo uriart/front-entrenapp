@@ -11,6 +11,7 @@ FROM nginx:alpine
 WORKDIR /usr/share/nginx/html
 COPY --from=build /app/dist/authapp /usr/share/nginx/html
 
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+#COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
