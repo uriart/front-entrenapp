@@ -11,8 +11,6 @@
 /e2e/*.json
 /e2e/*.js
 /e2e/*.ts
-/src/assets/
-/src/environments/*.ts
 
 # dependencies
 /node_modules
