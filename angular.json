@@ -19,7 +19,6 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "baseHref": "/entrenapp/",
-            "deployUrl": "/entrenapp/",
             "assets": [
               "src/assets/favicon.ico",
               "src/assets"

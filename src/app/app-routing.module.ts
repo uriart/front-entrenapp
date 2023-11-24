@@ -30,6 +30,10 @@ const routes: Routes = [
     component: PerfilComponent,
     canActivate: [ AuthGuard ]
   },
+  {
+    path: "auth",
+    loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
+  },
   { path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 
