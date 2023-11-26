@@ -11,28 +11,28 @@
                 <li class="nav-item" routerLinkActive="active">
                     <a class="nav-link hvr-icon-pulse" [routerLink]="['home']"><i class="fas fa-home hvr-icon"></i> Inicio</a>
                 </li>
-                <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated$ | async">
+                <li class="nav-item" routerLinkActive="active" *ngIf="session">
                     <a class="nav-link hvr-icon-pulse" [routerLink]="['marcas']"><i class="fas fa-dumbbell hvr-icon"></i> Mis marcas</a>
                 </li>
-                <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated$ | async">
+                <li class="nav-item" routerLinkActive="active" *ngIf="session">
                     <a class="nav-link hvr-icon-pulse" [routerLink]="[ 'programa']"><i class="far fa-calendar-alt hvr-icon"></i> Programa</a>
                 </li>
-                <li class="nav-item" routerLinkActive="active" *ngIf="auth.isAuthenticated$ | async">
+                <li class="nav-item" routerLinkActive="active" *ngIf="session">
                     <a class="nav-link hvr-icon-pulse" [routerLink]="[ 'libreta'] "><i class="far fa-clipboard hvr-icon"></i> Libreta</a>
                 </li>
             </ul>
             <span class="navbar-text ">
-                <ng-container *ngIf="auth.user$ | async as profile; else loggedOut">
+                <ng-container *ngIf="session; else elseBlock">
                     <a [routerLink]="['perfil']" >
-                        <img src="{{ profile.picture }}" class="rounded float mx-2 hvr-grow-shadow" width="40" height="40" >
+                        <img src="https://picsum.photos/100/100" class="rounded float mx-2 hvr-grow-shadow" width="40" height="40" >
                     </a>
-                    <button (click)="auth.logout({ returnTo: callback }) " class="btn btn-outline-dark">
+                    <button (click)="onLogout()" class="btn btn-outline-dark">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                         Logout
                     </button>
                 </ng-container>
-                <ng-template #loggedOut>
-                    <button (click)="auth.loginWithRedirect() " class="btn btn-outline-primary ">
+                <ng-template #elseBlock>
+                    <button (click)="redirectToLogin() " class="btn btn-outline-primary ">
                         <i class="fa fa-sign-in" aria-hidden="true"></i>
                         Login
                     </button>

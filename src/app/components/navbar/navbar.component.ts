@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+import * as Session from "supertokens-auth-react/recipe/session";
 
 @Component({
   selector: 'app-navbar',
@@ -12,10 +12,28 @@ export class NavbarComponent implements OnInit {
 
   callback = window.location.origin;
 
-  constructor( public auth:AuthService ) { }
+  public rootId = "rootId";
+  public userId = "";
+  public session = false;
 
-  ngOnInit(): void {
-    
+  ngOnInit() {
+      this.getUserInfo();
+  }
+
+  async getUserInfo() {
+      this.session = await Session.doesSessionExist();
+      if (this.session) {
+          this.userId = await Session.getUserId();
+      }
+  }
+
+  async onLogout() {
+      await Session.signOut();
+      window.location.reload();
+  }
+
+  redirectToLogin() {
+      window.location.href = "auth";
   }
 
 }

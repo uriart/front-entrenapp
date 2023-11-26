@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "authapp": {
+    "entrenapp": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,13 +13,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/authapp",
+            "outputPath": "dist/entrenapp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "baseHref": "/entrenapp/",
-            "deployUrl": "/entrenapp/",
             "assets": [
               "src/assets/favicon.ico",
               "src/assets"
@@ -65,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "authapp:build"
+            "browserTarget": "entrenapp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "authapp:build:production"
+              "browserTarget": "entrenapp:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "authapp:build"
+            "browserTarget": "entrenapp:build"
           }
         },
         "test": {
@@ -101,11 +100,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "authapp:serve"
+            "devServerTarget": "entrenapp:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "authapp:serve:production"
+              "devServerTarget": "entrenapp:serve:production"
             }
           }
         },
@@ -116,7 +115,7 @@
       }
     }
   },
-  "defaultProject": "authapp",
+  "defaultProject": "entrenapp",
   "cli": {
     "analytics": false
   }

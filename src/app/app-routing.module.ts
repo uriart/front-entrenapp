@@ -1,34 +1,40 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from '@auth0/auth0-angular';
 
 import { HomeComponent } from './components/home/home.component';
 import { MarcasComponent } from './components/marcas/marcas.component';
 import { ProgramaComponent } from './components/programa/programa.component';
 import { LibretaComponent } from './components/libreta/libreta.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { AuthModule } from './auth/auth.module';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { 
     path: 'marcas', 
     component: MarcasComponent,
-    canActivate: [AuthGuard] 
+    canActivate: [AuthModule] 
   },
   { 
     path: 'programa', 
     component: ProgramaComponent,
-    canActivate: [ AuthGuard ]
+    canActivate: [ AuthModule ]
   },
   { 
     path: 'libreta', 
     component: LibretaComponent,
-    canActivate: [ AuthGuard ]
+    canActivate: [ AuthModule ]
   },  
   { 
     path: 'perfil', 
     component: PerfilComponent,
-    canActivate: [ AuthGuard ]
+    canActivate: [ AuthModule ]
+  },
+  {
+    path: "auth",
+    component: AuthComponent,
+    loadChildren: () => import("./auth/auth.module").then((m) => m.AuthModule),
   },
   { path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];

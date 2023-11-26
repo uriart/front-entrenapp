@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
 import { ProgramaPowerliftingModel } from 'src/app/models/candito.model';
 import { ProgramacionesService } from 'src/app/services/programaciones.service';
 import { MarcasService } from 'src/app/services/marcas.service';
 import { MarcasModel } from 'src/app/models/marcas.model';
 import { AlertsService } from 'src/app/services/alerts.service';
+import * as Session from "supertokens-auth-react/recipe/session";
+
 
 @Component({
   selector: 'app-programa',
@@ -20,21 +21,19 @@ export class ProgramaComponent implements OnInit {
   pressBancaMaximaProyectada: string = "";
   pesoMuertoMaximaProyectada: string = "";
 
-  constructor( public auth: AuthService,
-               public programacionesService: ProgramacionesService,
+  constructor( public programacionesService: ProgramacionesService,
                private marcasService: MarcasService,
                private alerta:AlertsService) { }
 
 
   ngOnInit(): void {
-    this.auth.user$.subscribe(
-      (profile) => {
-        //Obtenemos el identificador del usuario
-        this.idUsuario = profile.sub.replace('|' ,'').replace('-','');
-        //Llamar al servicio para obtener el programa de entrenamiento en json. Enviar el idUsuario por parámetro
-        this.cargarPrograma();
-        this.getMarcas();
-      });
+    Session.getUserId().then((userId) => {
+      //Obtenemos el identificador del usuario
+      this.idUsuario = userId.replace('|' ,'').replace('-','');
+      //Llamar al servicio para obtener el programa de entrenamiento en json. Enviar el idUsuario por parámetro
+      this.cargarPrograma();
+      this.getMarcas();
+    });
   }
 
   cargarPrograma(): void {

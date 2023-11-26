@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '@auth0/auth0-angular';
+import * as Session from "supertokens-auth-react/recipe/session";
 import { Nota } from 'src/app/models/nota.model';
 import { NotasService } from 'src/app/services/notas.service';
 
@@ -15,16 +15,13 @@ export class LibretaComponent implements OnInit {
   notas: Nota[];
   notaObj = new Nota;
 
-  constructor(public auth: AuthService,
-              private notasService: NotasService) { }
+  constructor(private notasService: NotasService) { }
 
   ngOnInit(): void {
-    this.auth.user$.subscribe(
-      (profile) => {
-        this.idUsuario = profile.sub.replace('|' ,'').replace('-','');
-        this.recuperarNotas();
-      }
-    );
+    Session.getUserId().then((userId) => {
+      this.idUsuario = userId.replace('|' ,'').replace('-','');
+      this.recuperarNotas();
+    })
   }
 
   recuperarNotas():void {

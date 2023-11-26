@@ -1,19 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+import { AuthService } from '../../services/auth.service';
+import * as Session from "supertokens-auth-react/recipe/session";
+
 
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html'
 })
 export class PerfilComponent implements OnInit {
+
+  constructor(  private authService: AuthService ) { }
+
   profileJson: string = null;
 
-  constructor( public auth: AuthService ) { }
-
   ngOnInit(): void {
-    this.auth.user$.subscribe(
-      (profile) => (this.profileJson = JSON.stringify(profile, null, 2))
-    );
+    this.authService.getUserInfo()
+    .subscribe( resp  => {
+      if(null != resp){
+        this.profileJson = JSON.stringify(resp, null, 2);
+        console.log(this.profileJson);
+      }
+    });
+    
   }
 
 }

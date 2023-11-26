@@ -7,7 +7,7 @@ export const environment = {
     audience: 'https://users-api-test2.herokuapp.com/'
   },
   dev: {
-    apiUrl: 'https://uriart.sytes.net/api'
+    apiUrl: 'http://localhost:8080'
   }
 };
 

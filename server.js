@@ -14,10 +14,10 @@ app.get('/version', (req, res) =>{
 })
 
 // Serve only the static files form the dist directory
-app.use(express.static('./dist/authapp'));
+app.use(express.static('./dist/entrenapp'));
 
 app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/authapp/'}),
+    res.sendFile('index.html', {root: 'dist/entrenapp/'}),
 );
 
 // Start the app by listening on the default Heroku port

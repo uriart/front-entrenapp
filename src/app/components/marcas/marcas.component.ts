@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '@auth0/auth0-angular';
 import { MarcasModel } from 'src/app/models/marcas.model';
 import { MarcasService } from 'src/app/services/marcas.service';
 import { DateTime } from "luxon";
 import { AlertsService } from "../../services/alerts.service";
+import * as Session from "supertokens-auth-react/recipe/session";
+
 
 @Component({
   selector: 'app-marcas',
@@ -21,36 +21,34 @@ export class MarcasComponent implements OnInit {
   alertStatus = "visually-hidden";
   alertIcon = "Info";
 
-  constructor(  public auth: AuthService,
-                private marcasService: MarcasService,
+  constructor(  private marcasService: MarcasService,
                 private alerta:AlertsService ) { }
 
   ngOnInit(): void {
-    this.auth.user$.subscribe(
-      (profile) => {
-        this.idUsuario = profile.sub.replace('|' ,'').replace('-','');
-        //Recogemos las anteriores marcas del usuario
-        this.marcasService.getMarcas( this.idUsuario )
-        .subscribe( resp  => {
-          if(null != resp){
-            var marcasTemp: any = {
-              ...this.marcas
-            };
-            marcasTemp = resp;
-            marcasTemp.fechaInicio = DateTime
-                              .fromFormat( marcasTemp.fechaInicio, 'dd/MM/yyyy' )
-                              .toFormat( 'yyyy-MM-dd' );
 
-            this.marcas = marcasTemp;
-          } else {
-            this.alerta.showInfo(
-              'Introduzca sus marcas para generar el programa de entrenamiento',
-              'Atención'
-            );
-          }
-        });
-      }
-    );
+    Session.getUserId().then((userId) => {
+    this.idUsuario = userId.replace('|' ,'').replace('-','');
+      //Recogemos las anteriores marcas del usuario
+      this.marcasService.getMarcas( this.idUsuario )
+      .subscribe( resp  => {
+        if(null != resp){
+          var marcasTemp: any = {
+            ...this.marcas
+          };
+          marcasTemp = resp;
+          marcasTemp.fechaInicio = DateTime
+                            .fromFormat( marcasTemp.fechaInicio, 'dd/MM/yyyy' )
+                            .toFormat( 'yyyy-MM-dd' );
+
+          this.marcas = marcasTemp;
+        } else {
+          this.alerta.showInfo(
+            'Introduzca sus marcas para generar el programa de entrenamiento',
+            'Atención'
+          );
+        }
+      });
+  })
 
   }
 

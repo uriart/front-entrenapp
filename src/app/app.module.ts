@@ -9,7 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProgramaComponent } from './components/programa/programa.component';
 import { MarcasComponent } from './components/marcas/marcas.component';
 
-import { AuthModule, AuthHttpInterceptor } from '@auth0/auth0-angular';
+import { AuthModule } from './auth/auth.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -23,6 +23,7 @@ import { SpinnerModule } from './components/spinner/spinner.module';
 import { SpinnerInterceptor } from './interceptors/spinner.interceptor';
 import { FooterComponent } from './components/footer/footer.component';
 import { ToastrModule } from 'ngx-toastr';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -44,27 +45,22 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     MatTabsModule,
     BrowserAnimationsModule,
-    AuthModule.forRoot({
-      ...env.auth,
-      httpInterceptor: {
-        allowedList: [ `${env.dev.apiUrl}/powerlifting/*` ]
-      }
-    }),
+    AuthModule,
     SpinnerModule,
     ToastrModule.forRoot(),
   ],
-  providers: [
+   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthHttpInterceptor,
-      multi: true
+      useClass: AuthInterceptor,
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: SpinnerInterceptor,
       multi: true
     }
-  ],
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
