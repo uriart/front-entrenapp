@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import * as Session from "supertokens-auth-react/recipe/session";
 
 
 @Component({
@@ -18,7 +17,6 @@ export class PerfilComponent implements OnInit {
     .subscribe( resp  => {
       if(null != resp){
         this.profileJson = JSON.stringify(resp, null, 2);
-        console.log(this.profileJson);
       }
     });
     
