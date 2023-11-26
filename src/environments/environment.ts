@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   dev: {
-    apiUrl: 'api-entrenapp-service'
+    apiUrl: 'https://uriart.sytes.net/api'
   }
 };
 
