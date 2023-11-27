@@ -24,6 +24,7 @@ export class AuthInterceptor implements HttpInterceptor {
           const requestWithToken = req.clone({
             setHeaders: {
               Authorization: `Bearer ${token}`,
+              'Referrer-Policy': 'no-referrer-when-downgrade'
             },
           });
           return next.handle(requestWithToken);
