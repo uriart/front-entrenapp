@@ -4,10 +4,10 @@ import Session from "supertokens-auth-react/recipe/session";
 export const SuperTokensConfig = {
     appInfo: {
         appName: "entrenApp",
-        apiDomain: "https://uriart.sytes.net/auth",
-        websiteDomain: "https://uriart.sytes.net/entrenapp",
+        apiDomain: "http://supertokens-authentication-service:3001",
+        websiteDomain: "https://uriart.sytes.net",
         apiBasePath: "/auth",
-        websiteBasePath: "/entrenapp/auth"
+        websiteBasePath: "/entrenapp"
     },
     recipeList: [
         EmailPassword.init({
