@@ -7,7 +7,7 @@ export const SuperTokensConfig = {
         apiDomain: "http://supertokens-authentication-service:3001",
         websiteDomain: "https://uriart.sytes.net",
         apiBasePath: "/auth",
-        websiteBasePath: "/entrenapp"
+        websiteBasePath: "/entrenapp/auth"
     },
     recipeList: [
         EmailPassword.init({
