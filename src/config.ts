@@ -5,7 +5,7 @@ export const SuperTokensConfig = {
     appInfo: {
         appName: "entrenApp",
         apiDomain: "http://supertokens-authentication-service:3001",
-        websiteDomain: "http://front-entrenapp-service:80",
+        websiteDomain: "https://uriart.sytes.net",
         apiBasePath: "/auth",
         websiteBasePath: "/entrenapp/auth"
     },
