@@ -23,6 +23,15 @@ ng serve
 
 The application will be accessible at http://localhost:4200/entrenapp by default.
 
+### Docker
+Alternatively, you can use the Dockerized image available on Docker Hub:
+
+```bash
+docker run -p 4200:4200 uriart/front-entrenapp:1.0.0
+```
+
+This will start the application in a Docker container.
+
 ### Usage
 Open the application in your web browser.
 Enter your maximum bench press, deadlift, and squat weights.
