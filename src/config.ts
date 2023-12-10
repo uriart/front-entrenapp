@@ -7,7 +7,7 @@ export const SuperTokensConfig = {
         apiDomain: "https://uriart.sytes.net/supertokens-backend",
         websiteDomain: "https://uriart.sytes.net/entrenapp",
         apiBasePath: "/supertokens-backend/auth",
-        websiteBasePath: "/auth"
+        websiteBasePath: "/entrenapp/auth"
     },
     recipeList: [
         EmailPassword.init({
@@ -23,10 +23,10 @@ export const SuperTokensConfig = {
                     }
                     if (context.isNewRecipeUser && context.user.loginMethods.length === 1) {
                         // user signed up
-                        return "/home"
+                        return "/entrenapp/home"
                     } else {
                         // user signed in
-                        return "/home"
+                        return "/entrenapp/home"
                     }
                 }
                 // return undefined to let the default behaviour play out
