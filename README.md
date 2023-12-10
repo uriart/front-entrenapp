@@ -27,7 +27,7 @@ The application will be accessible at http://localhost:4200/entrenapp by default
 Alternatively, you can use the Dockerized image available on Docker Hub:
 
 ```bash
-docker run -p 4200:4200 uriart/front-entrenapp:1.0.0
+docker run -p 4200:80 uriart/front-entrenapp:1.0.0
 ```
 
 This will start the application in a Docker container.
