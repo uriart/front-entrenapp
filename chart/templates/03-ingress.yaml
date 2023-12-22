@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-entrenapp-frontend
+  namespace: {{ .Values.namespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: {{ .Values.host }}
+    http:
+      paths:
+      - path: /entrenapp(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: front-entrenapp-service
+            port: 
+              number: 80
+  tls:
+  - hosts:
+    - {{ .Values.host }}
+    secretName: cert-tls

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-entrenapp
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: front-entrenapp
+  template:
+    metadata:
+      labels:
+        app: front-entrenapp
+    spec:
+      containers:
+      - name: front-entrenapp
+        image: {{ .Values.image }}:{{ .Values.version }}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+

@@ -1,0 +1,4 @@
+image: uriart/front-entrenapp
+version: 1.0.0
+host: uriart.sytes.net
+namespace: entrenapp

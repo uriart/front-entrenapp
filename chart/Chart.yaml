@@ -1,0 +1,4 @@
+apiVersion: v1
+description: front-entrenapp Helm chart
+name: chart-front-entrenapp
+version: 1.0.0
